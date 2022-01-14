@@ -36,18 +36,15 @@ ActiveRecord::Schema.define(version: 2022_01_12_172042) do
   end
 
   create_table "administrators", force: :cascade do |t|
-    t.string "password", limit: 64
-    t.string "last_name", limit: 16
-    t.string "first_name", limit: 16
-    t.string "zipcode", limit: 16
-    t.string "address", limit: 128
-    t.string "email", limit: 128
-    t.string "phone_number", limit: 16
-    t.bigint "store_id", null: false
-    t.boolean "delete_flag"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["store_id"], name: "index_administrators_on_store_id"
+    t.index ["email"], name: "index_administrators_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_administrators_on_reset_password_token", unique: true
   end
 
   create_table "attendance_request_notifications", force: :cascade do |t|
@@ -70,18 +67,15 @@ ActiveRecord::Schema.define(version: 2022_01_12_172042) do
   end
 
   create_table "employees", force: :cascade do |t|
-    t.string "password", limit: 64
-    t.string "last_name", limit: 16
-    t.string "first_name", limit: 16
-    t.string "zipcode", limit: 16
-    t.string "address", limit: 128
-    t.string "email", limit: 128
-    t.string "phone_number", limit: 16
-    t.bigint "store_id", null: false
-    t.boolean "delete_flag"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["store_id"], name: "index_employees_on_store_id"
+    t.index ["email"], name: "index_employees_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -110,11 +104,9 @@ ActiveRecord::Schema.define(version: 2022_01_12_172042) do
   add_foreign_key "absence_request_notifications", "notifications"
   add_foreign_key "absence_requests", "administrators"
   add_foreign_key "absence_requests", "employees"
-  add_foreign_key "administrators", "stores"
   add_foreign_key "attendance_request_notifications", "attendance_requests"
   add_foreign_key "attendance_request_notifications", "notifications"
   add_foreign_key "attendance_requests", "administrators"
   add_foreign_key "attendance_requests", "employees"
-  add_foreign_key "employees", "stores"
   add_foreign_key "schedules", "employees"
 end

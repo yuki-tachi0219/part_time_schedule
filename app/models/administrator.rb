@@ -1,6 +1,6 @@
 class Administrator < ApplicationRecord
-  belongs_to :store
-
-  has_many :absence_requests
-  has_many :attendance_requests
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 end
