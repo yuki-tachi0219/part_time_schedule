@@ -1,4 +1,4 @@
 class AbsenceRequest < ApplicationRecord
-  has_many :attendance_request_notifications
+  belongs_to :schedules
   has_many :absence_request_notifications
 end
