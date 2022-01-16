@@ -1,6 +1,4 @@
 class AttendanceRequest < ApplicationRecord
-  belongs_to :employee
-  belongs_to :administrator
-
+  belongs_to :schedule
   has_many :attendance_request_notifications
 end
