@@ -1,4 +1,4 @@
 class Notification < ApplicationRecord
-  belongs_to :shift_works
-  belongs_to :absence
+  has_many :attendance_request_notifications
+  has_many :absence_request_notifications
 end
