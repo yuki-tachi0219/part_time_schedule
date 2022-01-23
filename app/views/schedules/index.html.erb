@@ -14,9 +14,9 @@
     <% @schedules.each do |schedule| %>
     <tr>
       <td><%= schedule.employee.last_name %></td>
-      <td><%= schedule.starting_time %></td>
-      <td><%= schedule.starting_time %></td>
-      <td><%= schedule.closing_time %></td>
+      <td><%= schedule.starting_time.strftime('%Y/%m/%d') %></td>
+      <td><%= schedule.starting_time.strftime('%H:%M') %></td>
+      <td><%= schedule.closing_time.strftime('%H:%M') %></td>
       <td>申請状態</td>
       <td>欠勤申請</td>
       <td><%= link_to "編集", edit_schedule_path(schedule.id), data: { confirm: '本当に編集していいですか？' } %></td>

@@ -9,21 +9,22 @@ class SchedulesController < ApplicationController
 
   def create
     @schedule = Schedule.new(user_params)
-    # @user.user_classification_id = 1 # ユーザー種別を購入者に限定する
-    if @schedule.save
-      flash[:success] = "シフトを登録しました。"
-      redirect_to schedules_path
-    else
-      flash[:danger] = "シフトを登録できませんでした。"
-      redirect_to schedules_path
-    end
   end
 
   def edit
+    @schedule = Schedules.find_by(id: params[:id])
   end
 
   def update
     @schedule = Schedules.find_by(id: params[:id])
+    @schedule.user_id = current_user.id
+    if @schedule.update(schedule_params)
+      flash[:success] = "シフトを編集しました。"
+      redirect_to schedules_path
+    else
+      flash[:danger] = "シフトを編集できませんでした。"
+      render :edit
+    end
   end
 
   def destroy
