@@ -1,0 +1,26 @@
+<h1>シフト一覧</h1>
+
+  <table class="table">
+    <tr>
+      <th>出勤者</th>
+      <th>出勤日</th>
+      <th>出勤時間</th>
+      <th>退勤時間</th>
+      <th>申請状態</th>
+      <th>欠勤申請</th>
+      <th>編集</th>
+      <th>削除</th>
+    </tr>
+    <% @schedules.each do |schedule| %>
+    <tr>
+      <td><%= schedule.employee.last_name %></td>
+      <td><%= schedule.starting_time %></td>
+      <td><%= schedule.starting_time %></td>
+      <td><%= schedule.closing_time %></td>
+      <td>申請状態</td>
+      <td>欠勤申請</td>
+      <td><%= link_to "編集", edit_schedule_path(schedule.id), data: { confirm: '本当に編集していいですか？' } %></td>
+      <td><%= link_to '削除', schedule_path(schedule.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+    </tr>
+    <% end %>
+  </table>
