@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   devise_for :employees, controllers: {
     sessions: 'employees/sessions'
   }
-
-  resources :employees
-  resources :attendance_requests
-  resources :schedules
+  namespace :employee do
+    resources :attendance_requests
+    resources :absence_requests
+    resources :employees
+    resources :schedules
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

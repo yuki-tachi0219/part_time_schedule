@@ -1,4 +1,5 @@
 <h1>シフト一覧</h1>
+<%= link_to "シフト申請", new_employee_attendance_request_path %>
 
   <table class="table">
     <tr>
@@ -19,8 +20,8 @@
       <td><%= schedule.closing_time.strftime('%H:%M') %></td>
       <td>申請状態</td>
       <td>欠勤申請</td>
-      <td><%= link_to "編集", edit_schedule_path(schedule.id), data: { confirm: '本当に編集していいですか？' } %></td>
-      <td><%= link_to '削除', schedule_path(schedule.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+      <td><%= link_to "編集", edit_employee_schedule_path(schedule.id), data: { confirm: '本当に編集していいですか？' } %></td>
+      <td><%= link_to '削除', employee_schedule_path(schedule.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
     </tr>
     <% end %>
   </table>

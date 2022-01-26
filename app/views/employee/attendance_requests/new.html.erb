@@ -1,0 +1,11 @@
+<h1>シフト申請</h1>
+
+<%= form_with model: @attendance_request, local: true do |form| %>
+  <%= form.label :starting_time, "出勤日　：　" %>
+  <%= form.date_select :starting_time %><br><br>
+  <%= form.label :starting_time, "出勤時間：　" %>
+  <%= form.time_select :starting_time %><br><br>
+  <%= form.label :starting_time, "退勤時間：　" %>
+  <%= form.time_select :starting_time %><br><br>
+  <%= form.submit '申請',  class: 'btn btn-default' %>
+<% end %>
