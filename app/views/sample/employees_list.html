@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width" />
+    <title>従業員一覧</title>
+    <meta name="description" content="ページの説明" />
+
+    <link rel="stylesheet" href="/assets/css/common.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="page-list">
+    <div class="container">
+      <div class="row my-1">
+        <div class="col-sm-2 col-12 bg-primary text-dark p-4 text-center">
+          管理者
+        </div>
+        <div
+          class="container row col-sm-10 col-12 bg-white ms-auto p-4 text-center"
+        >
+          <div class="col-sm pb-2"><a href="#">管理者メニュー</a></div>
+          <div class="col-sm pb-2"><a href="#">シフト一覧</a></div>
+          <div class="col-sm pb-2"><a href="#">シフト承認処理</a></div>
+          <div class="col-sm pb-2"><a href="#">欠勤承認処理</a></div>
+          <div class="col-sm pb-2"><a href="#">通知</a></div>
+          <div class="col-sm pb-2"><a href="#">ログアウト</a></div>
+        </div>
+      </div>
+      <div class="border"></div>
+      <div class="container py-1"></div>
+      <div class="row">
+        <div class="col-sm-4 col-12 bg-warning text-center py-2 mx-auto">
+          フラッシュメッセージ表示箇所
+        </div>
+      </div>
+
+      <div class="pt-5 container"></div>
+      <div class="row pb-5">
+        <div class="col-5 mx-auto">
+          <p class="h1 text-center">従業員一覧</p>
+        </div>
+      </div>
+      <div class="container py-3"></div>
+
+      <div class="container row">
+        <div
+          class="col-10 mx-auto d-flex justify-content-center align-items-center"
+        >
+          <div class="col-2 text-center">従業員名</div>
+          <div class="col-5">
+            <input
+              type="text"
+              class="form-control"
+              id="layoutExam3-address"
+              name="password"
+            />
+          </div>
+          <div class="col-2 text-center">
+            <button type="button" class="btn btn-outline-primary">検索</button>
+          </div>
+        </div>
+      </div>
+      <div class="row pt-4">
+        <div class="col-5 text-center mx-auto">
+          <button type="button" class="btn btn-outline-primary">
+            新規登録
+          </button>
+        </div>
+      </div>
+      <div class="container py-3"></div>
+      <div class="container">
+        <table class="table text-center">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>氏名</th>
+              <th>詳細</th>
+              <th>修正</th>
+              <th>削除</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>山田 太郎</td>
+              <td><a href="#">詳細</a></td>
+              <td><a href="#">修正</a></td>
+              <td><a href="#">削除</a></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td><a href="#">&nbsp;</a></td>
+              <td><a href="#">&nbsp;</a></td>
+              <td><a href="#">&nbsp;</a></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td><a href="#">&nbsp;</a></td>
+              <td><a href="#">&nbsp;</a></td>
+              <td><a href="#">&nbsp;</a></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td><a href="#">&nbsp;</a></td>
+              <td><a href="#">&nbsp;</a></td>
+              <td><a href="#">&nbsp;</a></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td><a href="#">&nbsp;</a></td>
+              <td><a href="#">&nbsp;</a></td>
+              <td><a href="#">&nbsp;</a></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td><a href="#">&nbsp;</a></td>
+              <td><a href="#">&nbsp;</a></td>
+              <td><a href="#">&nbsp;</a></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td><a href="#">&nbsp;</a></td>
+              <td><a href="#">&nbsp;</a></td>
+              <td><a href="#">&nbsp;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <div class="col-3 mx-auto">
+          <nav>
+            <ul class="pagination justify-content-center">
+              <li class="page-item"><a class="page-link" href="#">&lt;</a></li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">...</a></li>
+              <li class="page-item"><a class="page-link" href="#">10</a></li>
+              <li class="page-item"><a class="page-link" href="#">&gt;</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <footer class="footer"></footer>
+    </div>
+    <script src="/assets/js/common.js"></script>
+  </body>
+</html>

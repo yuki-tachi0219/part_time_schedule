@@ -1,1 +1,11 @@
 <h1>シフト編集</h1>
+
+<%= form_with model: @schedule, local: true do |form| %>
+  <%= form.label :starting_time, "出勤日　：　" %>
+  <%= form.text_field :starting_time, class: "field_area", size: "70*20" %><br><br>
+  <%= form.label :starting_time, "出勤時間：　" %>
+  <%= form.text_field :starting_time, class: "field_area", size: "70*20" %><br><br>
+  <%= form.label :starting_time, "退勤時間：　" %>
+  <%= form.text_field :starting_time, class: "field_area", size: "70*20" %><br><br>
+  <%= form.submit '修正', class: 'btn btn-default' %>
+<% end %>
