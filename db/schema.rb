@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_17_145546) do
+ActiveRecord::Schema.define(version: 2022_01_31_144446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,12 +27,10 @@ ActiveRecord::Schema.define(version: 2022_01_17_145546) do
   create_table "absence_requests", force: :cascade do |t|
     t.integer "state"
     t.string "reason", limit: 64
-    t.bigint "employee_id", null: false
-    t.bigint "administrator_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["administrator_id"], name: "index_absence_requests_on_administrator_id"
-    t.index ["employee_id"], name: "index_absence_requests_on_employee_id"
+    t.bigint "schedule_id", null: false
+    t.index ["schedule_id"], name: "index_absence_requests_on_schedule_id"
   end
 
   create_table "administrators", force: :cascade do |t|
@@ -63,13 +61,11 @@ ActiveRecord::Schema.define(version: 2022_01_17_145546) do
   end
 
   create_table "attendance_requests", force: :cascade do |t|
-    t.integer "state"
-    t.bigint "employee_id", null: false
-    t.bigint "administrator_id", null: false
+    t.integer "state", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["administrator_id"], name: "index_attendance_requests_on_administrator_id"
-    t.index ["employee_id"], name: "index_attendance_requests_on_employee_id"
+    t.bigint "schedule_id", null: false
+    t.index ["schedule_id"], name: "index_attendance_requests_on_schedule_id"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -114,11 +110,9 @@ ActiveRecord::Schema.define(version: 2022_01_17_145546) do
 
   add_foreign_key "absence_request_notifications", "absence_requests"
   add_foreign_key "absence_request_notifications", "notifications"
-  add_foreign_key "absence_requests", "administrators"
-  add_foreign_key "absence_requests", "employees"
+  add_foreign_key "absence_requests", "schedules"
   add_foreign_key "attendance_request_notifications", "attendance_requests"
   add_foreign_key "attendance_request_notifications", "notifications"
-  add_foreign_key "attendance_requests", "administrators"
-  add_foreign_key "attendance_requests", "employees"
+  add_foreign_key "attendance_requests", "schedules"
   add_foreign_key "schedules", "employees"
 end
