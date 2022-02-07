@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :attendance_requests
     resources :absence_requests
     resources :employees
-    resources :schedules
+    resources :schedules, only: [:index, :edit, :update, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
