@@ -21,6 +21,9 @@ Bundler.require(*Rails.groups)
 
 module PortfolioTest
   class Application < Rails::Application
+
+    require 'rails/all'
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 

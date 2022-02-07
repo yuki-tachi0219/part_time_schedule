@@ -1,26 +1,18 @@
 class Employee::SchedulesController < ApplicationController
+
   def index
     @schedules = Schedule.all
   end
 
-  # def new
-  #   @schedule = Schedule.new
-  # end
-
-  def create
-    @schedule = Schedule.new(user_params)
-  end
-
   def edit
-    @schedule = Schedules.find_by(id: params[:id])
+    @schedule = Schedule.find_by(id: params[:id])
   end
 
   def update
-    @schedule = Schedules.find_by(id: params[:id])
-    @schedule.user_id = current_user.id
-    if @schedule.update(schedule_params)
-      flash[:success] = "シフトを編集しました。"
-      redirect_to schedules_path
+    @schedule = Schedule.find_by(id: params[:id])
+    @schedule.employee_id = current_employee.id
+    if @schedule.update(schedules_params)
+      redirect_to employee_schedules_path, notice:"シフトを編集しました。"
     else
       flash[:danger] = "シフトを編集できませんでした。"
       render :edit
@@ -28,7 +20,14 @@ class Employee::SchedulesController < ApplicationController
   end
 
   def destroy
-    @schedule = Schedules.find_by(id: params[:id])
-    redirect_to schedules_path, notice:"削除しました"
+    @schedule = Schedule.find_by(id: params[:id]).destroy!
+    redirect_to employee_schedules_path, notice:"削除しました"
   end
+
+private
+
+  def schedules_params
+    params.require(:schedule).permit(:starting_time, :closing_time)
+  end
+
 end

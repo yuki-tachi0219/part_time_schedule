@@ -5,46 +5,68 @@ class Employee::AttendanceRequestsController < ApplicationController
   end
 
   def new
-    if params[:back]
-      @attendance_request = AttendanceRequest.new
-    end
+    @attendance_request = AttendanceRequest.new
   end
 
   def create
-    if params[:back]
-      @attendance_request = AtendanceRequest.new
-      render :new
-    else
-      if @attendance_request.save
-        redirect_to employee_schedules_path
+    # シフト申請、勤怠情報、通知をまとめて登録するためトランザクション処理
+    ActiveRecord::Base.transaction do
+
+      schedule = Schedule.new(schedules_params)
+      schedule.employee_id = current_employee.id
+      schedule.save!
+      attendance_request = schedule.build_attendance_request(attendance_requests_params)
+      if attendance_request.valid?
+        attendance_request.save!
       end
-    end
-  end
 
-  def show
-    @attendance_request = AttendanceRequest.find(params[:id])
-  end
-
-  def edit
-    @attendance_request = AttendanceRequest.find(params[:id])
-  end
-
-  def update
-    @attendance_request = AttendanceRequest.find(params[:id])
-    if @attendance_request.update(attendance_request_params)
-      redirect_to attendance_requests_path
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @attendance_request = AttendanceRequest.find(params[:id])
+      # 以下は通知機能作成時に記載。default値を指定するマイグレーションファイルを追加しモデルにEnumを記載。
+      # @notification = Notification.new
+      #   if @notification.valid?
+      #     @notification.save!
+      #   end
+      redirect_to employee_schedules_path, notice: "シフト申請登録が完了しました"
+    rescue => e
+      redirect_to employee_schedules_path, notice: "シフト申請登録に失敗しました"
   end
 end
 
-private
 
-def attendance_requests_params
-  params.require(:attendance_request).permit(:state, :employee_id, :administrator_id)
+# 以下アクションは未実装のためコメントアウト
+
+  def show
+    # @attendance_request = AttendanceRequest.find_by(id: params[:id])
+  end
+
+  def edit
+    # @attendance_request = AttendanceRequest.find_by(id: params[:id])
+  end
+
+  def update
+    # @attendance_request = AttendanceRequest.find_by(id: params[:id])
+    # schedule.employee_id = current_employee.id
+    # if @attendance_request.update(attendance_request_params)
+    #   redirect_to employee_attendance_requests_path, notice:"シフト申請を編集しました。"
+    # else
+    #   render :edit
+    # end
+  end
+
+  def destroy
+    # @attendance_request = AttendanceRequest.find_by(id: params[:id])
+  end
+
+  private
+
+  def attendance_requests_params
+    params.require(:attendance_request).permit(:state)
+  end
+
+  def schedules_params
+    carry_time = DateTime.new(params[:attendance_request][:"starting_time(1i)"].to_i,params[:attendance_request][:"starting_time(2i)"].to_i, params[:attendance_request][:"starting_time(3i)"].to_i, params[:attendance_request][:"starting_time(4i)"].to_i, params[:attendance_request][:"starting_time(5i)"].to_i)
+    soup_time = DateTime.new(params[:attendance_request][:"closing_time(1i)"].to_i,params[:attendance_request][:"closing_time(2i)"].to_i, params[:attendance_request][:"closing_time(3i)"].to_i, params[:attendance_request][:"closing_time(4i)"].to_i, params[:attendance_request][:"closing_time(5i)"].to_i)
+    params[:attendance_request].merge(starting_time: carry_time, closing_time: soup_time)
+    params.require(:attendance_request).permit(:starting_time, :closing_time)
+  end
+
 end
