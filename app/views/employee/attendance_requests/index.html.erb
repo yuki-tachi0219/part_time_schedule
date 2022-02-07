@@ -5,15 +5,17 @@
       <th>出勤日</th>
       <th>出勤時間</th>
       <th>退勤時間</th>
+      <th>申請状態</th>
       <th>詳細</th>
       <th>修正</th>
       <th>削除</th>
     </tr>
     <% @attendance_requests.each do |attendance_request| %>
     <tr>
-      <td><%= attendance_request.schedule.starting_time %></td>
-      <td><%= attendance_request.schedule.starting_time %></td>
-      <td><%= attendance_request.schedule.closing_time %></td>
+      <td><%= attendance_request.schedule.starting_time.strftime('%Y/%m/%d') %></td>
+      <td><%= attendance_request.schedule.starting_time.strftime('%H:%M') %></td>
+      <td><%= attendance_request.schedule.closing_time.strftime('%H:%M') %></td>
+      <td><%= attendance_request.state %></td>
       <td><%= link_to '詳細', employee_attendance_request_path(attendance_request.id) %></td>
       <td><%= link_to "編集", edit_employee_attendance_request_path(attendance_request.id) %></td>
       <td><%= link_to '削除', employee_attendance_request_path(attendance_request.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>

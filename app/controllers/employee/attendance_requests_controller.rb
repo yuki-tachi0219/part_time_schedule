@@ -35,7 +35,7 @@ end
 # 以下アクションは未実装のためコメントアウト
 
   def show
-    # @attendance_request = AttendanceRequest.find_by(id: params[:id])
+    @attendance_request = AttendanceRequest.find_by(id: params[:id])
   end
 
   def edit
