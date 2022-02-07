@@ -1,0 +1,16 @@
+<%= form_with @administrator do |form|%>
+  <%= form.label :管理者情報修正　%>
+  <%= form.label :姓 %>
+  <%= form.text_field :first_name %>
+  <%= form.label :名 %>
+  <%= form.text_field :last_name %>
+  <%= form.label :パスワード %>
+  <%= form.password_field :password %>
+  <%= form.label :住所 %>
+  <%= form.text_field :address %>
+  <%= form.label :メールアドレス %>
+  <%= form.email_field :email %>
+  <%= form.label :電話番号 %>
+  <%= form.text_field :phone_number %>
+  <%= form.submit "修正", class: "btn btn-primary" %>
+<% end %>

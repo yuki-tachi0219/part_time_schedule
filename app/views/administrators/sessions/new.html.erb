@@ -1,0 +1,19 @@
+<h2>Log in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :id, "ユーザーID" %><br />
+    <%= f.text_field :id, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, "パスワード" %><br />
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "ログイン" %>
+  </div>
+<% end %>
+
+<%= link_to "まだ登録がお済みでない方はこちら", new_administrator_path %>

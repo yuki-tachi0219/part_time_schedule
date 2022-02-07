@@ -1,0 +1,14 @@
+<h2>管理者情報</h2>
+<td class="text-center" style="width:20%">管理者ID</td>
+<td style="width:80%"><%= @administrator.id %></td>
+<td>氏名</td>
+<td><%= @administrator.last_name %><%= @administrator.first_name %></td>
+
+<td>住所</td>
+<%= @administrator.zipcode %>
+<%= @administrator.address %>
+<td>電話番号</td>
+<td><%= @administrator.phone_number%></td>
+<td>メールアドレス</td>
+<td><%= @administrator.email %></td>
+<%= link_to "修正する", edit_administrator_path(@administrator) %>

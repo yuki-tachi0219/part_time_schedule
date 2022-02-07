@@ -1,0 +1,14 @@
+<h2>従業員詳細情報</h2>
+<td class="text-center" style="width:20%">従業員ID</td>
+<td style="width:80%"><%= @employee.id %></td>
+<td>氏名</td>
+<td><%= @employee.last_name %><%= @employee.first_name %></td>
+
+<td>住所</td>
+<%= @employee.zipcode %>
+<%= @employee.address %>
+<td>電話番号</td>
+<td><%= @employee.phone_number%></td>
+<td>メールアドレス</td>
+<td><%= @employee.email %></td>
+<%= link_to "修正する", edit_user_path(@user) %>
