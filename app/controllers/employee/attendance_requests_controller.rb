@@ -17,7 +17,7 @@ class Employee::AttendanceRequestsController < ApplicationController
       schedule.save!
       attendance_request = schedule.build_attendance_request(attendance_requests_params)
       if attendance_request.valid?
-        attendance_request.save!
+        attendance_request.save!a
       end
 
       # 以下は通知機能作成時に記載。default値を指定するマイグレーションファイルを追加しモデルにEnumを記載。
@@ -31,25 +31,27 @@ class Employee::AttendanceRequestsController < ApplicationController
   end
 end
 
-
-# 以下アクションは未実装のためコメントアウト
-
   def show
     @attendance_request = AttendanceRequest.find_by(id: params[:id])
   end
 
   def edit
-    # @attendance_request = AttendanceRequest.find_by(id: params[:id])
+    @attendance_request = AttendanceRequest.find_by(id: params[:id])　# → 修正するレコードIDはあっている
+    @schedule = Schedule.find_by(id: @attendance_request.schedule_id )　# → 修正するレコードIDはあっている
   end
 
+# 修正ボタン押下時に以下処理ではなくscheduleコントローラーのeditに飛んでしまう
+
   def update
-    # @attendance_request = AttendanceRequest.find_by(id: params[:id])
-    # schedule.employee_id = current_employee.id
-    # if @attendance_request.update(attendance_request_params)
-    #   redirect_to employee_attendance_requests_path, notice:"シフト申請を編集しました。"
-    # else
-    #   render :edit
-    # end
+    binding.pry
+    @attendance_request = AttendanceRequest.find_by(id: params[:id])
+    @schedule = Schedule.find_by(id: @attendance_request.schedule_id )
+    @schedule.employee_id = current_employee.id
+    if @attendance_request.update(attendance_request_params)
+      redirect_to employee_attendance_requests_path, notice:"シフト申請を編集しました。"
+    else
+      render :edit
+    end
   end
 
   def destroy
