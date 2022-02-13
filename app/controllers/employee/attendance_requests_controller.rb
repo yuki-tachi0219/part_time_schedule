@@ -17,7 +17,7 @@ class Employee::AttendanceRequestsController < ApplicationController
       schedule.save!
       attendance_request = schedule.build_attendance_request(attendance_requests_params)
       if attendance_request.valid?
-        attendance_request.save!a
+        attendance_request.save!
       end
 
       # 以下は通知機能作成時に記載。default値を指定するマイグレーションファイルを追加しモデルにEnumを記載。
