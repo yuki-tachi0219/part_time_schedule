@@ -35,29 +35,6 @@ end
     @attendance_request = AttendanceRequest.find_by(id: params[:id])
   end
 
-  def edit
-    @attendance_request = AttendanceRequest.find_by(id: params[:id])　# → 修正するレコードIDはあっている
-    @schedule = Schedule.find_by(id: @attendance_request.schedule_id )　# → 修正するレコードIDはあっている
-  end
-
-# 修正ボタン押下時に以下処理ではなくscheduleコントローラーのeditに飛んでしまう
-
-  def update
-    binding.pry
-    @attendance_request = AttendanceRequest.find_by(id: params[:id])
-    @schedule = Schedule.find_by(id: @attendance_request.schedule_id )
-    @schedule.employee_id = current_employee.id
-    if @attendance_request.update(attendance_request_params)
-      redirect_to employee_attendance_requests_path, notice:"シフト申請を編集しました。"
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    # @attendance_request = AttendanceRequest.find_by(id: params[:id])
-  end
-
   private
 
   def attendance_requests_params
