@@ -15,10 +15,10 @@
       <td><%= absence.schedule.starting_time %></td>
       <td><%= absence.schedule.starting_time %></td>
       <td><%= absence.schedule.closing_time %></td>
-      <td><%= link_to '詳細', absence_request_path(absence_request.id) %></td>
+      <td><%= link_to '詳細', absence_request_path(absence) %></td>
       <td></td>
-      <td><%= link_to "編集", edit_absence_request_path(absence_request.id), data: { confirm: '本当に編集していいですか？' } %></td>
-      <td><%= link_to '削除', absence_request_path(absence_request.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+      <td><%= link_to "編集", edit_absence_request_path(absence), data: { confirm: '本当に編集していいですか？' } %></td>
+      <td><%= link_to '削除', absence_request_path(absence), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
     </tr>
     <% end %>
   </table>
