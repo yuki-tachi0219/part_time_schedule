@@ -9,14 +9,14 @@
       <th>修正</th>
       <th>削除</th>
     </tr>
-    <% @attendance_requests.each do |attendance_request| %>
+    <% @attendance_requests.each do |attendance| %>
     <tr>
-      <td><%= attendance_request.schedule.starting_time %></td>
-      <td><%= attendance_request.schedule.starting_time %></td>
-      <td><%= attendance_request.schedule.closing_time %></td>
-      <td><%= link_to '詳細', employee_attendance_request_path(attendance_request.id) %></td>
-      <td><%= link_to "編集", edit_employee_attendance_request_path(attendance_request.id) %></td>
-      <td><%= link_to '削除', employee_attendance_request_path(attendance_request.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+      <td><%= attendance.schedule.starting_time %></td>
+      <td><%= attendance.schedule.starting_time %></td>
+      <td><%= attendance.schedule.closing_time %></td>
+      <td><%= link_to '詳細', employee_attendance_request_path(attendance) %></td>
+      <td><%= link_to "編集", edit_employee_attendance_request_path(attendance) %></td>
+      <td><%= link_to '削除', employee_attendance_request_path(attendance), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
     </tr>
     <% end %>
   </table>
