@@ -27,7 +27,7 @@ class Employee::AttendanceRequestsController < ApplicationController
       #   end
       redirect_to employee_schedules_path, notice: "シフト申請登録が完了しました"
     rescue => e
-      redirect_to employee_schedules_path, notice: "シフト申請登録に失敗しました"
+      redirect_to employee_schedules_path, alert: "シフト申請登録に失敗しました"
   end
 end
 
