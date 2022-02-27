@@ -14,7 +14,7 @@ class Employee::SchedulesController < ApplicationController
     if @schedule.update(schedules_params)
       redirect_to employee_schedules_path, notice:"シフトを編集しました。"
     else
-      flash[:danger] = "シフトを編集できませんでした。"
+      flash_now[:danger] = "シフトを編集できませんでした。"
       render :edit
     end
   end
