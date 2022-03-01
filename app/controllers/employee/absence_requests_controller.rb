@@ -21,19 +21,20 @@ class Employee::AbsenceRequestsController < ApplicationController
     end
   end
 
+  # 以下コメントアウト分は機能実装時に内容を修正し反映させます
   def show
-    @attendance_request = AttendanceRequest.find(params[:id])
+    # @attendance_request = AttendanceRequest.find(params[:id])
   end
 
   def edit
-    @attendance_request = AttendanceRequest.find(params[:id])
+    # @attendance_request = AttendanceRequest.find(params[:id])
   end
 
   def update
-    @attendance_request = AttendanceRequest.find(params[:id])
+    # @attendance_request = AttendanceRequest.find(params[:id])
   end
 
   def destroy
-    @attendance_request = AttendanceRequest.find(params[:id])
+    # @attendance_request = AttendanceRequest.find(params[:id])
   end
 end
