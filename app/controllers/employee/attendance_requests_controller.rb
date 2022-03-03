@@ -31,29 +31,8 @@ class Employee::AttendanceRequestsController < ApplicationController
   end
 end
 
-
-# 以下アクションは未実装のためコメントアウト
-
   def show
-    # @attendance_request = AttendanceRequest.find_by(id: params[:id])
-  end
-
-  def edit
-    # @attendance_request = AttendanceRequest.find_by(id: params[:id])
-  end
-
-  def update
-    # @attendance_request = AttendanceRequest.find_by(id: params[:id])
-    # schedule.employee_id = current_employee.id
-    # if @attendance_request.update(attendance_request_params)
-    #   redirect_to employee_attendance_requests_path, notice:"シフト申請を編集しました。"
-    # else
-    #   render :edit
-    # end
-  end
-
-  def destroy
-    # @attendance_request = AttendanceRequest.find_by(id: params[:id])
+    @attendance_request = AttendanceRequest.find_by(id: params[:id])
   end
 
   private

@@ -1,8 +1,23 @@
 <h1>シフト申請詳細</h1>
-'出勤日'
-'出勤時間'
-'退勤時間'
-'申請状態'
-<br>
-'申請一覧に戻る'
-'修正画面へ'
+
+<table>
+  <tbody>
+    <tr>
+      <td>　出勤日　：　</td>
+      <td><%= @attendance_request.schedule.starting_time.strftime('%Y/%m/%d') %></td>
+    </tr>
+    <tr>
+      <td>  出勤時間　：　</td>
+      <td><%= @attendance_request.schedule.starting_time.strftime('%H:%M') %></td>
+    </tr>
+    <tr>
+      <td>  退勤時間　：　</td>
+      <td><%= @attendance_request.schedule.closing_time.strftime('%H:%M') %></td>
+    </tr>
+    <tr>
+      <td>  申請状態　：　</td>
+      <td><%= @attendance_request.state %></td>
+  </tbody>
+</table>
+
+<%= link_to "申請一覧に戻る", employee_attendance_requests_path(@attendance_request) %>

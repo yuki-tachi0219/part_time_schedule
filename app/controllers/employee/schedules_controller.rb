@@ -4,6 +4,7 @@ class Employee::SchedulesController < ApplicationController
     @schedules = Schedule.all
   end
 
+<<<<<<< HEAD
   def edit
     @schedule = Schedule.find_by(id: params[:id])
   end
@@ -30,4 +31,6 @@ private
     params.require(:schedule).permit(:starting_time, :closing_time)
   end
 
+=======
+>>>>>>> feature/#a-14
 end

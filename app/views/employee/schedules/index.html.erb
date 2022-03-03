@@ -7,8 +7,6 @@
       <th>出勤日</th>
       <th>出勤時間</th>
       <th>退勤時間</th>
-      <th>編集</th>
-      <th>削除</th>
     </tr>
     <% @schedules.each do |schedule| %>
     <tr>
@@ -16,8 +14,6 @@
       <td><%= schedule.starting_time.strftime('%Y/%m/%d') %></td>
       <td><%= schedule.starting_time.strftime('%H:%M') %></td>
       <td><%= schedule.closing_time.strftime('%H:%M') %></td>
-      <td><%= link_to "編集", edit_employee_schedule_path(schedule) %></td>
-      <td><%= link_to '削除', employee_schedule_path(schedule), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
     </tr>
     <% end %>
   </table>
