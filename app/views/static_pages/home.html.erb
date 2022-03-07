@@ -1,3 +1,20 @@
-<h1>ホーム</h1>
-<%= link_to "管理者はこちら", 'administrators/sign_in', class: "btn btn-primary" %>
-<%= link_to "従業員はこちら", 'employees/sign_in', class: "btn btn-primary" %>
+<% if administrator_signed_in? %>
+  <h1>管理者メニュー</h1>
+  <%= link_to "管理者情報詳細", administrator_path(current_administrator), class: "btn btn-primary"%>
+  <%= link_to "従業員一覧", index_employees_administrator_path(current_administrator), class: "btn btn-primary"%>
+  <%= link_to "シフト一覧", schedules_path, class: "btn btn-primary"%>
+  <%= link_to "シフト承認処理", attendance_requests_path, class: "btn btn-primary"%>
+  <%#= link_to "欠勤承認処理", edit_administrator, class: "btn btn-primary"%>
+  <%#= link_to "通知", edit_administrator, class: "btn btn-primary"%>
+<%elsif employee_signed_in? %>
+  <h1>従業員メニュー</h1>
+  <%= link_to "ユーザー情報", employee_path(current_employee), class: "btn btn-primary"%>
+  <%= link_to "シフト一覧", schedules_path, class: "btn btn-primary"%>
+  <%#= link_to "シフト申請一覧", schedule_path, class: "btn btn-primary"%>
+  <%#= link_to "欠勤申請一覧", attendance_request, class: "btn btn-primary"%>
+  <%#= link_to "通知", edit_administrator, class: "btn btn-primary"%>
+<% else %>
+  <h1>ホーム</h1>
+  <%= link_to "管理者はこちら", 'administrators/sign_in', class: "btn btn-primary" %>
+  <%= link_to "従業員はこちら", 'employees/sign_in', class: "btn btn-primary" %>
+<% end %>
