@@ -1,11 +1,11 @@
-class AttendanceRequestsController < ApplicationController
+class Employee::AbsenceRequestsController < ApplicationController
 
   def index
-    @attendance_requests = AttendanceRequest.all
+    @absence_requests = AbsenceRequest.all
   end
 
   def new
-    @attendance_request = AttendanceRequest.new
+    @absence_request = AbsenceRequest.new
   end
 
   def create
