@@ -7,18 +7,14 @@
       <th>退勤時間</th>
       <th>詳細</th>
       <th>申請状態</th>
-      <th>修正</th>
-      <th>削除</th>
     </tr>
-    <% @absence_requests.each do |absence| %>
+    <% @absence_requests.each do |absence_request| %>
     <tr>
-      <td><%= absence.schedule.starting_time %></td>
-      <td><%= absence.schedule.starting_time %></td>
-      <td><%= absence.schedule.closing_time %></td>
-      <td><%= link_to '詳細', absence_request_path(absence_request.id) %></td>
-      <td></td>
-      <td><%= link_to "編集", edit_absence_request_path(absence_request.id), data: { confirm: '本当に編集していいですか？' } %></td>
-      <td><%= link_to '削除', absence_request_path(absence_request.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+      <td><%= absence_request.schedule.starting_time.strftime('%Y/%m/%d') %></td>
+      <td><%= absence_request.schedule.starting_time.strftime('%H:%M') %></td>
+      <td><%= absence_request.schedule.closing_time.strftime('%H:%M') %></td>
+      <td><%= link_to '詳細', employee_absence_request_path(absence_request.id) %></td>
+      <td><%= absence_request.state_i18n %></td>
     </tr>
     <% end %>
   </table>
