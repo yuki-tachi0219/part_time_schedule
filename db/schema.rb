@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_31_144446) do
+ActiveRecord::Schema.define(version: 2022_02_27_143109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2022_01_31_144446) do
   end
 
   create_table "absence_requests", force: :cascade do |t|
-    t.integer "state"
+    t.integer "state", default: 0
     t.string "reason", limit: 64
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -100,6 +100,12 @@ ActiveRecord::Schema.define(version: 2022_01_31_144446) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["employee_id"], name: "index_schedules_on_employee_id"
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.string "name", limit: 32
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "absence_request_notifications", "absence_requests"

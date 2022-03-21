@@ -1,1 +1,25 @@
 <h1>欠勤申請</h1>
+
+
+<table>
+  <tbody>
+    <tr>
+      <td>　出勤日　：　</td>
+      <td><%= @schedule.starting_time.strftime('%Y/%m/%d') %></td>
+    </tr>
+    <tr>
+      <td>  出勤時間　：　</td>
+      <td><%= @schedule.starting_time.strftime('%H:%M') %></td>
+    </tr>
+    <tr>
+      <td>  退勤時間　：　</td>
+      <td><%= @schedule.closing_time.strftime('%H:%M') %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= form_with(model: [ :employee, @schedule, @absence_request], local: true) do |form| %>
+  <%= form.label :reason, "欠勤理由　：　" %>
+  <%= form.text_field :reason %>
+  <%= form.submit '申請',  class: 'btn btn-default' %>
+<% end %>
