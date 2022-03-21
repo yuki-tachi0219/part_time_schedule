@@ -13,7 +13,7 @@
       <td><%= attendance_request.schedule.starting_time.strftime('%Y/%m/%d') %></td>
       <td><%= attendance_request.schedule.starting_time.strftime('%H:%M') %></td>
       <td><%= attendance_request.schedule.closing_time.strftime('%H:%M') %></td>
-      <td><%= link_to '詳細', employee_attendance_request_path(attendance_request.id) %></td>
+      <td><%= link_to '詳細', employee_attendance_request_path(attendance_request) %></td>
       <td><%= attendance_request.state_i18n %></td>
     </tr>
     <% end %>
