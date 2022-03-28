@@ -1,16 +1,16 @@
 <header>
   <div class="container">
-    <div class="row my-1">
+    <div class="d-flex align-items-center justify-content-between">
       <div class="col-sm-2 col-12 bg-warning text-dark p-4 text-center">
         従業員
       </div>
-      <div　class="container row col-sm-10 col-12 bg-white ms-auto p-4 text-center">
-        <%= link_to "従業員メニュー", class: "col-sm pb-2" %>
-        <%= link_to "シフト一覧", employee_schedules_path, class: "col-sm pb-2" %>
-        <%= link_to "シフト申請一覧", employee_attendance_requests_path, class: "col-sm pb-2" %>
-        <%= link_to "欠勤申請一覧", employee_absence_requests_path, class: "col-sm pb-2" %>
-        <%= link_to "通知", class: "col-sm pb-2" %>
-        <%= link_to "ログアウト", destroy_employee_session_path,method: :delete, class: "col-sm pb-2"%>
+      <div class="d-flex w-100 justify-content-between col-12 col-sm-10 bg-white ms-auto p-4 text-center">
+        <%= link_to "従業員メニュー", employee_schedules_path, class: "pb-2" %>
+        <%= link_to "シフト一覧", employee_schedules_path, class: "pb-2" %>
+        <%= link_to "シフト申請一覧", employee_attendance_requests_path, class: "pb-2" %>
+        <%= link_to "欠勤申請一覧", employee_absence_requests_path, class: "pb-2" %>
+        <%= link_to "通知", employee_schedules_path, class: "pb-2" %>
+        <%= link_to "ログアウト", destroy_employee_session_path,method: :delete, class: "pb-2"%>
       </div>
     </div>
   </div>
