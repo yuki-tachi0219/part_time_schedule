@@ -5,7 +5,6 @@ class Employee::AbsenceRequestsController < ApplicationController
   end
 
   def new
-    binding.pry
     @absence_request = AbsenceRequest.new
     @schedule = current_employee.schedules.find_by(id: params[:schedule_id])
   end

@@ -5,6 +5,7 @@ class Employee::AttendanceRequestsController < ApplicationController
   end
 
   def new
+    binding.pry
     @attendance_request = AttendanceRequest.new
   end
 
