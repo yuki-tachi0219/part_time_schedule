@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   namespace :employee do
     resources :attendance_requests
     resources :absence_requests
+    resources :notifications, only: [:index]
     resources :employees
     resources :schedules, only: [:index, :edit, :update, :destroy]
   end

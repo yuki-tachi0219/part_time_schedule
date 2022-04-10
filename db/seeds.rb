@@ -22,42 +22,87 @@ Administrator.create!(
   delete_flg: false,
 )
 
+2.times do |n|
+  Schedule.create!(
+    starting_time: "2022-01-06 10:00:00",
+    closing_time: "2022-01-06 16:00:00",
+    employee_id: 1,
+  )
+end
+2.times do |n|
+  Schedule.create!(
+    starting_time: "2022-01-07 10:00:00",
+    closing_time: "2022-01-07 18:00:00",
+    employee_id: 2,
+  )
+end
+AttendanceRequest.create!(
+  state: 0,
+  schedule_id: 1,
+)
+AttendanceRequest.create!(
+  state: 0,
+  schedule_id: 2,
+)
+AttendanceRequest.create!(
+  state: 1,
+  schedule_id: 3,
+)
+AttendanceRequest.create!(
+  state: 2,
+  schedule_id: 4,
+)
+
+# AbsenceRequest.create!(
+#   state: 0,
+#   reason: "私用のため1",
+#   schedule_id: 1,
+# )
+# AbsenceRequest.create!(
+#   state: 0,
+#   reason: "私用のため2",
+#   schedule_id: 2,
+# )
 # AbsenceRequest.create!(
 #   state: 1,
-#   reason: "私用のため。",
-#   employee_id: 1,
-#   administrator_id: 1,
+#   reason: "私用のため3",
+#   schedule_id: 3,
+# )
+# AbsenceRequest.create!(
+#   state: 2,
+#   reason: "私用のため4",
+#   schedule_id: 4,
 # )
 
-# AttendanceRequest.create!(
-#   state: 1,
-#   employee_id: 1,
-#   administrator_id: 1,
-# )
-
-# Notification.create!(
-#   type: 1,
-#   checked: false,
-# )
-
-Schedule.create!(
-  starting_time: "2022-01-06 10:00:00",
-  closing_time: "2022-01-06 16:00:00",
-  employee_id: 1,
+# 4.times do |n|
+Notification.create!(
+  action: 0,
+  checked: false,
 )
-
-Schedule.create!(
-  starting_time: "2022-01-07 10:00:00",
-  closing_time: "2022-01-07 17:00:00",
-  employee_id: 2,
+Notification.create!(
+  action: 0,
+  checked: false,
 )
-
-# AbsenceRequestNotification.create!(
-#   absence_request_id: ,
-#   notification_id: ,
-# )
-
-# AttendanceRequestNotifications.create!(
-#   absence_request_id: ,
-#   notification_id: ,
-# )
+# end
+# 2.times do |n|
+Notification.create!(
+  action: 1,
+  checked: false,
+)
+# end
+# 2.times do |n|
+  Notification.create!(
+    action: 2,
+    checked: false,
+  )
+  # end
+# AbsenceRequest.all.ids.sort.each do |absence_request_id|
+#   Notification.all.ids.sort.each do |notification_id|
+#     AbsenceRequestNotification.create(absence_request_id: absence_request_id, notification_id: notification_id)
+#   end
+# end
+AttendanceRequest.all.ids.sort.each do |attendance_request_id|
+  Notification.all.ids.sort.each do |notification_id|
+    AttendanceRequestNotification.create(attendance_request_id: attendance_request_id, notification_id: notification_id)
+  end
+end

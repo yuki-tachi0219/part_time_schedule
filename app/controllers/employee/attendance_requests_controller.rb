@@ -19,12 +19,10 @@ class Employee::AttendanceRequestsController < ApplicationController
       if attendance_request.valid?
         attendance_request.save!
       end
-
-      # 以下は通知機能作成時に記載。default値を指定するマイグレーションファイルを追加しモデルにEnumを記載。
-      # @notification = Notification.new
-      #   if @notification.valid?
-      #     @notification.save!
-      #   end
+      notification = Notification.new
+      if notification.valid?
+        notification.save!
+      end
       redirect_to employee_schedules_path, notice: "シフト申請登録が完了しました"
     rescue => e
       redirect_to employee_schedules_path, alert: "シフト申請登録に失敗しました"
