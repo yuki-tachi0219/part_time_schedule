@@ -22,6 +22,7 @@ class Employee::AttendanceRequestsController < ApplicationController
       notification = Notification.new
       if notification.valid?
         notification.save!
+        # AttendanceRequestNotificationにもレコードを作らないと
       end
       redirect_to employee_schedules_path, notice: "シフト申請登録が完了しました"
     rescue => e
