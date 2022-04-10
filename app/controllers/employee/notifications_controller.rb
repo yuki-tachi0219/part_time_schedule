@@ -1,12 +1,8 @@
 class Employee::NotificationsController < ApplicationController
 
   def index
- binding.pry
-    @notifications = current_employee.id
-    @notifications.where(checked: false).each do |notification|
-      notification.update_attributes(checked: true)
-    end
-    # @notifications = Notification.all
+    @notifications = Notification.joins(attendance_requests: :schedule).where(attendance_requests: { schedules: { employee_id: current_employee.id } }).distinct.where.not(action: "application")
+
   end
 
 end
