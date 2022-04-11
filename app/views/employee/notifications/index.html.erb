@@ -4,5 +4,6 @@ TODO:申請中のものは表示しない。自分が申請した申請分の承
 
 <% @notifications.each do |notification| %>
   <%= notification.created_at.strftime('%Y年%m月%d日') %>
+  <%= associated_request(notification) %> が
   <%= notification.action_i18n %>されました<br>
 <% end %>

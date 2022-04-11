@@ -1,0 +1,25 @@
+notifications: &notifications
+    index:
+      request_type:
+        attendance: 'シフト申請'
+        absence: '欠勤申請'
+ja:
+  administrator:
+    notifications: *notifications
+  employee:
+    notifications: *notifications
+
+# ↓ これをDRYに書くと上記のようになる
+# ja:
+#   administrator:
+#     notifications:
+#       index:
+#         request_type:
+#           attendance: 'シフト申請'
+#           absence: '欠勤申請'
+#   employee:
+#     notifications:
+#       index:
+#         request_type:
+#           attendance: 'シフト申請'
+#           absence: '欠勤申請'
