@@ -15,15 +15,11 @@ class Employee::AttendanceRequestsController < ApplicationController
       schedule = Schedule.new(schedules_params)
       schedule.employee_id = current_employee.id
       schedule.save!
+
       attendance_request = schedule.build_attendance_request(attendance_requests_params)
-      if attendance_request.valid?
-        attendance_request.save!
-      end
-      notification = Notification.new
-      if notification.valid?
-        notification.save!
-        # AttendanceRequestNotificationにもレコードを作らないと
-      end
+      attendance_request.save!
+
+      attendance_request.attendance_request_notifications.create!(notification: Notification.new)
       redirect_to employee_schedules_path, notice: "シフト申請登録が完了しました"
     rescue => e
       redirect_to employee_schedules_path, alert: "シフト申請登録に失敗しました"
