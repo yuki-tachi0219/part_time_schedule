@@ -1,7 +1,7 @@
 class AttendanceRequest < ApplicationRecord
   belongs_to :schedule
+  has_many :attendance_request_notifications, dependent: :destroy
   has_many :notifications, through: :attendance_request_notifications
-  has_many :attendance_request_notifications
   enum state: {
     application: 0, #申請中
     approval: 1,  #承認
