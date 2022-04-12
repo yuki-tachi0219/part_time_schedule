@@ -1,5 +1,14 @@
-<h1>シフト一覧</h1>
-<%= link_to "シフト申請", new_employee_attendance_request_path %>
+<div class="container">
+<div class="pt-5 container"></div>
+  <div class="row pb-5">
+    <div class="col-5 mx-auto">
+      <p class="h1 text-center">シフト一覧</p>
+    </div>
+  </div>
+  <div class="col-1 mx-auto">
+    <%= link_to "シフト申請", new_employee_attendance_request_path, class: "btn btn-outline-primary text-center" %>
+  </div>
+  <div class="container py-3"></div>
 
   <table class="table">
     <tr>
@@ -19,3 +28,4 @@
     </tr>
     <% end %>
   </table>
+</div>
