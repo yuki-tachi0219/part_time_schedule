@@ -1,25 +1,46 @@
-<h1>欠勤申請</h1>
+<div class="container">
+  <div class="pt-5 container"></div>
+  <div class="row pb-5">
+    <div class="col-5 mx-auto">
+      <p class="h1 text-center">欠勤申請</p>
+    </div>
+  </div>
+<div class="container py-3"></div>
 
-
-<table>
-  <tbody>
-    <tr>
-      <td>　出勤日　：　</td>
-      <td><%= @schedule.starting_time.strftime('%Y/%m/%d') %></td>
-    </tr>
-    <tr>
-      <td>  出勤時間　：　</td>
-      <td><%= @schedule.starting_time.strftime('%H:%M') %></td>
-    </tr>
-    <tr>
-      <td>  退勤時間　：　</td>
-      <td><%= @schedule.closing_time.strftime('%H:%M') %></td>
-    </tr>
-  </tbody>
-</table>
+<div class="row pb-5">
+  <div class="d-flex col-4 mx-auto">
+    <div class="col-8 text-center">　出勤日　：　</div>
+    <div class="col-4 text-start"><%= @schedule.starting_time.strftime('%Y年%m月%d日') %></div>
+  </div>
+</div>
+<div class="row pb-5">
+  <div class="d-flex col-4 mx-auto">
+    <div class="col-8 text-center">　出勤時間　：　</div>
+    <div class="col-4 text-start"><%= @schedule.starting_time.strftime('%H:%M') %></div>
+  </div>
+</div>
+<div class="row pb-5">
+  <div class="d-flex col-4 mx-auto">
+    <div class="col-8 text-center">  退勤時間　：　</div>
+    <div class="col-4 text-start"><%= @schedule.closing_time.strftime('%H:%M') %></div>
+  </div>
+</div>
 
 <%= form_with(model: [ :employee, @schedule, @absence_request], local: true) do |form| %>
-  <%= form.label :reason, "欠勤理由　：　" %>
-  <%= form.text_field :reason %>
-  <%= form.submit '申請',  class: 'btn btn-default' %>
+  <div class="d-flex col-4 mx-auto">
+    <%= form.label :reason, "欠勤理由　：　", class: "col-8 text-center" %>
+  </div>
+
+  <div class="container py-3"></div>
+  <div class="row pb-5">
+    <div class="d-flex col-5 mx-auto">
+      <%= form.text_field :reason, class: "form-control"%>
+    </div>
+  </div>
+
+  <div class="container py-3"></div>
+  <div class="pt-4 container"></div>
+  <div class="container text-center">
+    <%= form.submit '申請', class: "btn btn-outline-primary text-center" %>
+  </div>
 <% end %>
