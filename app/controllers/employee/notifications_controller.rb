@@ -5,7 +5,6 @@ class Employee::NotificationsController < ApplicationController
     @notifications = relation.where(attendance_requests: { schedules: { employee_id: current_employee.id } })
                             .or(relation.where(absence_requests: { schedules: { employee_id: current_employee.id } }))
                             .distinct.where.not(action: "application")
-
   end
 
 end
