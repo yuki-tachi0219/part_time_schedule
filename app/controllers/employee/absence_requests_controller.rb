@@ -6,35 +6,28 @@ class Employee::AbsenceRequestsController < ApplicationController
 
   def new
     @absence_request = AbsenceRequest.new
+    @schedule = current_employee.schedules.find_by(id: params[:schedule_id])
   end
 
   def create
-    @attendance_request = AttendanceRequest.new(attendance_request_params)
-    @attendance_request.user_id = current_user.id
-    if params[:back]
-      render :new
-    else
-      if @attendance_request.save
-        redirect_to attendance_requests_path
-        render :new
+    absence_request = current_employee.schedules.find_by(id: params[:schedule_id]).build_absence_request(absence_request_params)
+      if absence_request.save
+        flash[:success] = "欠勤申請しました。"
+        redirect_to employee_absence_requests_path
+      else
+        flash[:danger] = "欠勤申請を登録できませんでした。"
+        render "new"
       end
-    end
   end
 
-  # 以下コメントアウト分は機能実装時に内容を修正し反映させます
   def show
-    # @attendance_request = AttendanceRequest.find(params[:id])
+    @absence_request = AbsenceRequest.find_by(id: params[:id])
   end
 
-  def edit
-    # @attendance_request = AttendanceRequest.find(params[:id])
+  private
+
+  def absence_request_params
+    params.permit(:reason)
   end
 
-  def update
-    # @attendance_request = AttendanceRequest.find(params[:id])
-  end
-
-  def destroy
-    # @attendance_request = AttendanceRequest.find(params[:id])
-  end
 end

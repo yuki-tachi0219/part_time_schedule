@@ -1,1 +1,23 @@
 <h1>欠勤申請詳細</h1>
+
+<table>
+  <tbody>
+    <tr>
+      <td>　出勤日　：　</td>
+      <td><%= @absence_request.schedule.starting_time.strftime('%Y/%m/%d') %></td>
+    </tr>
+    <tr>
+      <td>  出勤時間　：　</td>
+      <td><%= @absence_request.schedule.starting_time.strftime('%H:%M') %></td>
+    </tr>
+    <tr>
+      <td>  退勤時間　：　</td>
+      <td><%= @absence_request.schedule.closing_time.strftime('%H:%M') %></td>
+    </tr>
+    <tr>
+      <td>  申請状態　：　</td>
+      <td><%= @absence_request.state_i18n %></td>
+  </tbody>
+</table>
+
+<%= link_to "申請一覧に戻る", employee_absence_requests_path(@absence_request) %>

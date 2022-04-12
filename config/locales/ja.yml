@@ -2,6 +2,11 @@ ja:
   enums:
     attendance_request:
       state:
-        application: 申請中
-        approval: 承認
-        rejection: 却下
+        application: "申請中"
+        approval: "承認"
+        rejection: "却下"
+    absence_request:
+      state:
+        application: "申請中"
+        approval: "承認"
+        rejection: "却下"
