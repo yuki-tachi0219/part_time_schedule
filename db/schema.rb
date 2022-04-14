@@ -102,12 +102,6 @@ ActiveRecord::Schema.define(version: 2022_03_31_144303) do
     t.index ["employee_id"], name: "index_schedules_on_employee_id"
   end
 
-  create_table "stores", force: :cascade do |t|
-    t.string "name", limit: 32
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   add_foreign_key "absence_request_notifications", "absence_requests"
   add_foreign_key "absence_request_notifications", "notifications"
   add_foreign_key "absence_requests", "schedules"

@@ -53,28 +53,6 @@ AttendanceRequest.create!(
   schedule_id: 4,
 )
 
-# AbsenceRequest.create!(
-#   state: 0,
-#   reason: "私用のため1",
-#   schedule_id: 1,
-# )
-# AbsenceRequest.create!(
-#   state: 0,
-#   reason: "私用のため2",
-#   schedule_id: 2,
-# )
-# AbsenceRequest.create!(
-#   state: 1,
-#   reason: "私用のため3",
-#   schedule_id: 3,
-# )
-# AbsenceRequest.create!(
-#   state: 2,
-#   reason: "私用のため4",
-#   schedule_id: 4,
-# )
-
-# 4.times do |n|
 Notification.create!(
   action: 0,
   checked: false,
@@ -83,26 +61,59 @@ Notification.create!(
   action: 0,
   checked: false,
 )
-# end
-# 2.times do |n|
 Notification.create!(
   action: 1,
   checked: false,
 )
-# end
-# 2.times do |n|
+Notification.create!(
+  action: 2,
+  checked: false,
+)
+AttendanceRequest.all.ids.sort.each do |attendance_request_id|
+  Notification.all.ids.sort.each do |notification_id|
+    AttendanceRequestNotification.create(attendance_request_id: attendance_request_id, notification_id: notification_id)
+  end
+end
+
+AbsenceRequest.create!(
+  state: 0,
+  reason: "私用のため1",
+  schedule_id: 1,
+)
+AbsenceRequest.create!(
+  state: 0,
+  reason: "私用のため2",
+  schedule_id: 2,
+)
+AbsenceRequest.create!(
+  state: 1,
+  reason: "私用のため3",
+  schedule_id: 3,
+)
+AbsenceRequest.create!(
+  state: 2,
+  reason: "私用のため4",
+  schedule_id: 4,
+)
+
+Notification.create!(
+  action: 0,
+  checked: false,
+)
+Notification.create!(
+  action: 0,
+  checked: false,
+)
+Notification.create!(
+  action: 1,
+  checked: false,
+)
   Notification.create!(
     action: 2,
     checked: false,
   )
-  # end
-# AbsenceRequest.all.ids.sort.each do |absence_request_id|
-#   Notification.all.ids.sort.each do |notification_id|
-#     AbsenceRequestNotification.create(absence_request_id: absence_request_id, notification_id: notification_id)
-#   end
-# end
-AttendanceRequest.all.ids.sort.each do |attendance_request_id|
+AbsenceRequest.all.ids.sort.each do |absence_request_id|
   Notification.all.ids.sort.each do |notification_id|
-    AttendanceRequestNotification.create(attendance_request_id: attendance_request_id, notification_id: notification_id)
+    AbsenceRequestNotification.create(absence_request_id: absence_request_id, notification_id: notification_id)
   end
 end
