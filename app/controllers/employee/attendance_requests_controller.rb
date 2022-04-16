@@ -26,7 +26,6 @@ class Employee::AttendanceRequestsController < ApplicationController
   rescue => e
     redirect_to employee_schedules_path, alert: "シフト申請登録に失敗しました"
   end
-end
 
   def show
     @attendance_request = AttendanceRequest.find_by(id: params[:id])

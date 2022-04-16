@@ -22,8 +22,6 @@ class Employee::AbsenceRequestsController < ApplicationController
   rescue => e
       redirect_to employee_schedules_path, alert: "欠勤申請登録に失敗しました"
   end
-end
-
 
   def show
     @absence_request = AbsenceRequest.find_by(id: params[:id])
