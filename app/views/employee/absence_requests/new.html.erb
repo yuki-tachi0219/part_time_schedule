@@ -5,42 +5,43 @@
       <p class="h1 text-center">欠勤申請</p>
     </div>
   </div>
-<div class="container py-3"></div>
-
-<div class="row pb-5">
-  <div class="d-flex col-4 mx-auto">
-    <div class="col-8 text-center">　出勤日　：　</div>
-    <div class="col-4 text-start"><%= @schedule.starting_time.strftime('%Y年%m月%d日') %></div>
-  </div>
-</div>
-<div class="row pb-5">
-  <div class="d-flex col-4 mx-auto">
-    <div class="col-8 text-center">　出勤時間　：　</div>
-    <div class="col-4 text-start"><%= @schedule.starting_time.strftime('%H:%M') %></div>
-  </div>
-</div>
-<div class="row pb-5">
-  <div class="d-flex col-4 mx-auto">
-    <div class="col-8 text-center">  退勤時間　：　</div>
-    <div class="col-4 text-start"><%= @schedule.closing_time.strftime('%H:%M') %></div>
-  </div>
-</div>
-
-<%= form_with(model: [ :employee, @schedule, @absence_request], local: true) do |form| %>
-  <div class="d-flex col-4 mx-auto">
-    <%= form.label :reason, "欠勤理由　：　", class: "col-8 text-center" %>
-  </div>
-
   <div class="container py-3"></div>
+
   <div class="row pb-5">
-    <div class="d-flex col-5 mx-auto">
-      <%= form.text_field :reason, class: "form-control"%>
+    <div class="d-flex col-4 mx-auto">
+      <div class="col-8 text-center">　出勤日　：　</div>
+      <div class="col-4 text-start"><%= @schedule.starting_time.strftime('%Y年%m月%d日') %></div>
+    </div>
+  </div>
+  <div class="row pb-5">
+    <div class="d-flex col-4 mx-auto">
+      <div class="col-8 text-center">　出勤時間　：　</div>
+      <div class="col-4 text-start"><%= @schedule.starting_time.strftime('%H:%M') %></div>
+    </div>
+  </div>
+  <div class="row pb-5">
+    <div class="d-flex col-4 mx-auto">
+      <div class="col-8 text-center">  退勤時間　：　</div>
+      <div class="col-4 text-start"><%= @schedule.closing_time.strftime('%H:%M') %></div>
     </div>
   </div>
 
-  <div class="container py-3"></div>
-  <div class="pt-4 container"></div>
-  <div class="container text-center">
-    <%= form.submit '申請', class: "btn btn-outline-primary text-center" %>
-  </div>
-<% end %>
+  <%= form_with(model: [ :employee, @schedule, @absence_request], local: true) do |form| %>
+    <div class="d-flex col-4 mx-auto">
+      <%= form.label :reason, "欠勤理由　：　", class: "col-8 text-center" %>
+    </div>
+
+    <div class="container py-3"></div>
+    <div class="row pb-5">
+      <div class="d-flex col-5 mx-auto">
+        <%= form.text_field :reason, class: "form-control"%>
+      </div>
+    </div>
+
+    <div class="container py-3"></div>
+    <div class="pt-4 container"></div>
+    <div class="container text-center">
+      <%= form.submit '申請', class: "btn btn-outline-primary text-center" %>
+    </div>
+  <% end %>
+</div>

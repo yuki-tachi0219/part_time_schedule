@@ -1,35 +1,37 @@
-<div class="pt-5 container"></div>
-<div class="row pb-5">
-  <div class="col-5 mx-auto">
-    <p class="h1 text-center">欠勤申請詳細</p>
+<div class="container">
+  <div class="pt-5 container"></div>
+  <div class="row pb-5">
+    <div class="col-5 mx-auto">
+      <p class="h1 text-center">欠勤申請詳細</p>
+    </div>
   </div>
-</div>
 
-<div class="row pb-5">
-  <div class="d-flex col-4 mx-auto">
-    <div class="col-8 text-center">　出勤日　：　</div>
-    <div class="col-4 text-start"><%= @absence_request.schedule.starting_time.strftime('%Y年%m月%d日') %></div>
+  <div class="row pb-5">
+    <div class="d-flex col-4 mx-auto">
+      <div class="col-8 text-center">　出勤日　：　</div>
+      <div class="col-4 text-start"><%= @absence_request.schedule.starting_time.strftime('%Y年%m月%d日') %></div>
+    </div>
   </div>
-</div>
-<div class="row pb-5">
-  <div class="d-flex col-4 mx-auto">
-    <div class="col-8 text-center"> 出勤時間　：　</div>
-    <div class="col-4 text-start"><%= @absence_request.schedule.starting_time.strftime('%H:%M') %></div>
+  <div class="row pb-5">
+    <div class="d-flex col-4 mx-auto">
+      <div class="col-8 text-center"> 出勤時間　：　</div>
+      <div class="col-4 text-start"><%= @absence_request.schedule.starting_time.strftime('%H:%M') %></div>
+    </div>
   </div>
-</div>
-<div class="row pb-5">
-  <div class="d-flex col-4 mx-auto">
-    <div class="col-8 text-center">退勤時間　：　</div>
-    <div class="col-4 text-start"><%= @absence_request.schedule.closing_time.strftime('%H:%M') %></div>
+  <div class="row pb-5">
+    <div class="d-flex col-4 mx-auto">
+      <div class="col-8 text-center">退勤時間　：　</div>
+      <div class="col-4 text-start"><%= @absence_request.schedule.closing_time.strftime('%H:%M') %></div>
+    </div>
   </div>
-</div>
-<div class="row pb-5">
-  <div class="d-flex col-4 mx-auto">
-    <div class="col-8 text-center">申請状態　：　</div>
-    <div class="col-4 text-start"><%= @absence_request.state_i18n %></div>
+  <div class="row pb-5">
+    <div class="d-flex col-4 mx-auto">
+      <div class="col-8 text-center">申請状態　：　</div>
+      <div class="col-4 text-start"><%= @absence_request.state_i18n %></div>
+    </div>
   </div>
-</div>
-<div class="pt-3 container"></div>
-<div class="container text-center">
-  <%= link_to "申請一覧に戻る", employee_attendance_requests_path(@attendance_request), class: "btn btn-outline-primary text-center" %>
+  <div class="pt-3 container"></div>
+  <div class="container text-center">
+    <%= link_to "申請一覧に戻る", employee_attendance_requests_path(@attendance_request), class: "btn btn-outline-primary text-center" %>
+  </div>
 </div>
