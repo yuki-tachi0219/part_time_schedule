@@ -22,8 +22,9 @@ class Employee::AttendanceRequestsController < ApplicationController
 
       attendance_request.attendance_request_notifications.create!(notification: Notification.new)
       redirect_to employee_schedules_path, notice: "シフト申請登録が完了しました"
-    rescue => e
-      redirect_to employee_schedules_path, alert: "シフト申請登録に失敗しました"
+    end
+  rescue => e
+    redirect_to employee_schedules_path, alert: "シフト申請登録に失敗しました"
   end
 end
 

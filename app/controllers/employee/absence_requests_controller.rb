@@ -18,7 +18,8 @@ class Employee::AbsenceRequestsController < ApplicationController
 
       absence_request.absence_request_notifications.create!(notification: Notification.new)
       redirect_to employee_schedules_path, notice: "欠勤申請登録が完了しました"
-    rescue => e
+    end
+  rescue => e
       redirect_to employee_schedules_path, alert: "欠勤申請登録に失敗しました"
   end
 end
