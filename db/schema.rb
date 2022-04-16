@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_31_144303) do
+ActiveRecord::Schema.define(version: 2022_04_16_154521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 2022_03_31_144303) do
   end
 
   create_table "absence_requests", force: :cascade do |t|
-    t.integer "state", default: 0
-    t.string "reason", limit: 64
+    t.integer "state", default: 0, null: false
+    t.string "reason", limit: 64, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "schedule_id", null: false
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2022_03_31_144303) do
   end
 
   create_table "attendance_requests", force: :cascade do |t|
-    t.integer "state", default: 0
+    t.integer "state", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "schedule_id", null: false
@@ -87,15 +87,15 @@ ActiveRecord::Schema.define(version: 2022_03_31_144303) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.integer "action", default: 0
-    t.boolean "checked", default: false
+    t.integer "action", default: 0, null: false
+    t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "schedules", force: :cascade do |t|
-    t.datetime "starting_time"
-    t.datetime "closing_time"
+    t.datetime "starting_time", null: false
+    t.datetime "closing_time", null: false
     t.bigint "employee_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
