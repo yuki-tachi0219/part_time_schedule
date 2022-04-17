@@ -7,37 +7,37 @@
   </div>
   <div class="container py-3"></div>
 
-<%= form_with(model: [ :employee, @attendance_request ]) do |form| %>
-  <div class="container mb-4 text-center">
-    <div class="row justify-content-center">
-      <%= form.label :starting_time, "出勤日　：　", class: "col-form-label col-sm-2 text-center" %>
-      <div class="col-sm-6">
-        <%= form.date_field :starting_time, class: "form-control", id: "date_sample"%>
+  <%= form_with(model: [ :employee, @attendance_request ]) do |form| %>
+    <div class="container mb-4 text-center">
+      <div class="row justify-content-center">
+        <%= form.label :starting_time, "出勤日　：　", class: "col-form-label col-sm-2 text-center" %>
+        <div class="col-sm-6">
+          <%= form.date_field :starting_time, class: "form-control", id: "date_sample"%>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="container py-3"></div>
-  <div class="container mb-4 text-center">
-    <div class="row justify-content-center">
-      <%= form.label :starting_time, "出勤時間：　", class: "col-form-label col-sm-2 text-center" %>
-      <div class="col-sm-6">
-        <%= form.time_field :starting_time, class: "form-control", id: "date_sample" %>
+    <div class="container py-3"></div>
+    <div class="container mb-4 text-center">
+      <div class="row justify-content-center">
+        <%= form.label :starting_time, "出勤時間：　", class: "col-form-label col-sm-2 text-center" %>
+        <div class="col-sm-6">
+          <%= form.time_field :starting_time, class: "form-control", id: "date_sample" %>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="container py-3"></div>
-  <div class="container mb-4 text-center">
-    <div class="row justify-content-center">
-      <%= form.label :closing_time, "退勤時間：　", class: "col-form-label col-sm-2 text-center" %>
-      <div class="col-sm-6">
+    <div class="container py-3"></div>
+    <div class="container mb-4 text-center">
+      <div class="row justify-content-center">
+        <%= form.label :closing_time, "退勤時間：　", class: "col-form-label col-sm-2 text-center" %>
+        <div class="col-sm-6">
           <%= form.time_field :closing_time, class: "form-control", id: "date_sample" %>
         </div>
+      </div>
     </div>
-  </div>
-  <div class="container py-3"></div>
-  <div class="pt-4 container"></div>
+    <div class="container py-3"></div>
+    <div class="pt-4 container"></div>
     <div class="container text-center">
       <%= form.submit '申請', class: "btn btn-outline-primary text-center" %>
     </div>
-
-<% end %>
+  <% end %>
+</div>

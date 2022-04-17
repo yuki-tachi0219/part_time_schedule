@@ -1,0 +1,13 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+inherit_from:
+  - "config/rubocop/rails.yml"
+  - "config/rubocop/rubocop.yml"
+  - "config/rubocop/rspec.yml"
+
+AllCops:
+  TargetRubyVersion: 2.7.1
+  TargetRailsVersion: 6.1.4
+  NewCops: enable

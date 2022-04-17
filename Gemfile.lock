@@ -199,6 +199,8 @@ GEM
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
+    rubocop-rspec (2.9.0)
+      rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -265,7 +267,9 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.4)
   rails-i18n
+  rubocop
   rubocop-rails
+  rubocop-rspec
   sass-rails (>= 6)
   spring
   turbolinks (~> 5)

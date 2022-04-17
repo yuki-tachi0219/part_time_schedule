@@ -9,10 +9,15 @@ Rails.application.routes.draw do
   namespace :employee do
     resources :attendance_requests
     resources :absence_requests, only: [:index, :show]
+    resources :notifications, only: [:index]
     resources :employees
     resources :schedules, only: [:index, :edit, :update, :destroy] do
-        resources :absence_requests, only: [:new, :create]
+      resources :absence_requests, only: [:new, :create]
     end
+  end
+
+  namespace :administrator do
+    resources :notifications, only: [:index]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
