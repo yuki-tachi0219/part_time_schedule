@@ -1,36 +1,37 @@
+# rubocop:disable all
 2.times do |n|
   employee = Employee.create!(
-    password:"testpass",
-    last_name:"山田#{n + 1}",
-    first_name:"太郎#{n + 1}",
-    zipcode:"000-0000",
-    address:"〇〇県〇〇市〇〇町0-0#{n + 1}",
-    email:"e#{n + 1}@example.com",
-    phone_number:"000-0000-000#{n + 1}",
+    password: "testpass",
+    last_name: "山田#{n + 1}",
+    first_name: "太郎#{n + 1}",
+    zipcode: "000-0000",
+    address: "〇〇県〇〇市〇〇町0-0#{n + 1}",
+    email: "e#{n + 1}@example.com",
+    phone_number: "000-0000-000#{n + 1}",
     delete_flag: false,
   )
 end
 
 Administrator.create!(
-  password:"testpass",
-  last_name:"管理",
-  first_name:"店長",
-  zipcode:"000-0000",
-  address:"〇〇県〇〇市〇〇町",
-  email:"eee@example.com",
-  phone_number:"000-0000-000",
+  password: "testpass",
+  last_name: "管理",
+  first_name: "店長",
+  zipcode: "000-0000",
+  address: "〇〇県〇〇市〇〇町",
+  email: "eee@example.com",
+  phone_number: "000-0000-000",
   delete_flg: false,
 )
 
 ActiveRecord::Base.transaction do
-  2.times do |n|
+  2.times do |_n|
     Schedule.create!(
       starting_time: "2022-01-06 10:00:00",
       closing_time: "2022-01-06 16:00:00",
       employee_id: 1,
     )
   end
-  2.times do |n|
+  2.times do |_n|
     Schedule.create!(
       starting_time: "2022-01-07 10:00:00",
       closing_time: "2022-01-07 18:00:00",
@@ -121,3 +122,4 @@ ActiveRecord::Base.transaction do
     end
   end
 end
+# rubocop:enable all

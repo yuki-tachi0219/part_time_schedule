@@ -1,5 +1,4 @@
 class Employee::EmployeesController < ApplicationController
-
   def show
     @employee = Employee.find(params[:id])
   end
