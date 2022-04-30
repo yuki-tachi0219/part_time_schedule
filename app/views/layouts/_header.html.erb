@@ -1,4 +1,11 @@
-<header>
+<%
+=begin%>
+ TODO:従業員と管理者で条件分岐記載
+<%
+=end%>
+<%
+=begin%>
+ <header>
   <div class="container">
     <div class="d-flex align-items-center justify-content-between">
       <div class="col-sm-2 col-12 bg-warning text-dark p-4 text-center">
@@ -11,6 +18,27 @@
         <%= link_to "欠勤申請一覧", employee_absence_requests_path, class: "pb-2" %>
         <%= link_to "通知", employee_notifications_path, class: "pb-2" %>
         <%= link_to "ログアウト", destroy_employee_session_path,method: :delete, class: "pb-2"%>
+      </div>
+    </div>
+  </div>
+  <div class="border"></div>
+</header>
+<%
+=end%>
+
+<header>
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="col-sm-2 col-12 bg-primary text-dark p-4 text-center">
+        管理者
+      </div>
+      <div class="d-flex w-100 justify-content-between col-12 col-sm-10 bg-white ms-auto p-4 text-center">
+        <%= link_to "管理者メニュー", administrator_schedules_path, class: "pb-2" %>
+        <%= link_to "シフト一覧", administrator_schedules_path, class: "pb-2" %>
+        <%= link_to "シフト承認処理", administrator_attendance_requests_path, class: "pb-2" %>
+        <%= link_to "欠勤承認処理", administrator_absence_requests_path, class: "pb-2" %>
+        <%= link_to "通知", administrator_notifications_path, class: "pb-2" %>
+        <%= link_to "ログアウト", destroy_administrator_session_path,method: :delete, class: "pb-2"%>
       </div>
     </div>
   </div>

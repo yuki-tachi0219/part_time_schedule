@@ -9,7 +9,7 @@ class Employee::EmployeesController < ApplicationController
 
   def update
     @employee = Employee.find(params[:id])
-    if @employee.update(user_params)
+    if @employee.update(employee_params)
       redirect_to @employee
     else
       render "edit"

@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="pt-5 container"></div>
+  <div class="row pb-5">
+    <div class="col-5 mx-auto">
+      <p class="h1 text-center">欠勤申請一覧</p>
+    </div>
+  </div>
+  <div class="container py-3"></div>
+
+  <table class="table">
+    <tr>
+      <th>出勤者</th>
+      <th>出勤日</th>
+      <th>出勤時間</th>
+      <th>退勤時間</th>
+      <th>申請状態</th>
+      <th>承認</th>
+    </tr>
+    <% @absence_requests.each do |absence_request| %>
+    <tr>
+      <td><%= absence_request.schedule.employee.last_name %></td>
+      <td><%= absence_request.schedule.starting_time.strftime('%Y年%m月%d日') %></td>
+      <td><%= absence_request.schedule.starting_time.strftime('%H:%M') %></td>
+      <td><%= absence_request.schedule.closing_time.strftime('%H:%M') %></td>
+      <td><%= absence_request.state_i18n %></td>
+      <td><%= link_to '詳細', edit_administrator_absence_request_path(absence_request.id) %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

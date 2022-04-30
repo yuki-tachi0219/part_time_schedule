@@ -5,9 +5,6 @@
       <p class="h1 text-center">シフト一覧</p>
     </div>
   </div>
-  <div class="col-1 mx-auto">
-    <%= link_to "シフト申請", new_employee_attendance_request_path, class: "btn btn-outline-primary text-center" %>
-  </div>
   <div class="container py-3"></div>
 
   <table class="table">
@@ -16,7 +13,6 @@
       <th>出勤日</th>
       <th>出勤時間</th>
       <th>退勤時間</th>
-      <th>欠勤申請</th>
     </tr>
     <% @schedules.each do |schedule| %>
     <tr>
@@ -24,7 +20,6 @@
       <td><%= schedule.starting_time.strftime('%Y/%m/%d') %></td>
       <td><%= schedule.starting_time.strftime('%H:%M') %></td>
       <td><%= schedule.closing_time.strftime('%H:%M') %></td>
-      <td><%= link_to "欠勤申請", new_employee_schedule_absence_request_path(schedule.id) %></td>
     </tr>
     <% end %>
   </table>
