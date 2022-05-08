@@ -22,8 +22,11 @@
       </div>
     </div>
     <div class="pt-4 container"></div>
-    <div class="container text-center">
-      <%= f.submit "ログイン", class: "btn btn-primary" %>
+    <div class="row">
+      <div class="container text-center">
+          <%= link_to "登録はこちら", new_administrator_administrator_path, class: "btn btn-primary mx-5" %>
+        <%= f.submit "ログイン", class: "btn btn-primary mx-5" %>
+      </div>
     </div>
   <% end %>
 </div>

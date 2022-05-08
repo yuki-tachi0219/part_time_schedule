@@ -24,7 +24,12 @@
       <td><%= schedule.starting_time.strftime('%Y/%m/%d') %></td>
       <td><%= schedule.starting_time.strftime('%H:%M') %></td>
       <td><%= schedule.closing_time.strftime('%H:%M') %></td>
-      <td><%= link_to "欠勤申請", new_employee_schedule_absence_request_path(schedule.id) %></td>
+<%
+=begin%>
+ TODO:欠勤申請されている場合非表示
+<%
+=end%>
+        <td><%= link_to "欠勤申請", new_employee_schedule_absence_request_path(schedule.id) %></td>
     </tr>
     <% end %>
   </table>
