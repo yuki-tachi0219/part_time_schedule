@@ -21,15 +21,15 @@ class Employee::EmployeesController < ApplicationController
 
   private
 
-  def employee_params
-    params.require(:employee).permit(:last_name, :first_name, :password, :zipcode, :address, :email, :phone_number)
-  end
-
-  def correct_employee
-    employee = Employee.find(params[:id])
-    if employee != current_employee
-      flash[:notice] = "他人の情報にアクセスすることはできません。"
-      redirect_to root_path
+    def employee_params
+      params.require(:employee).permit(:last_name, :first_name, :password, :zipcode, :address, :email, :phone_number)
     end
-  end
+
+    def correct_employee
+      employee = Employee.find(params[:id])
+      if employee != current_employee
+        flash[:notice] = "他人の情報にアクセスすることはできません。"
+        redirect_to root_path
+      end
+    end
 end

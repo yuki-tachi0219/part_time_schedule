@@ -4,7 +4,7 @@ class Employee::AttendanceRequestsController < ApplicationController
   def index
     if employee_signed_in?
       relation = AttendanceRequest.joins(:schedule)
-      @attendance_requests = relation.where( schedules: { employee_id: current_employee.id } )
+      @attendance_requests = relation.where(schedules: { employee_id: current_employee.id })
     end
   end
 

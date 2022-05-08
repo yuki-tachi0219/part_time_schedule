@@ -12,7 +12,7 @@ class Administrator::AttendanceRequestsController < ApplicationController
   def update
     ActiveRecord::Base.transaction do
       attendance_request = AttendanceRequest.find_by(id: params[:id])
-      attendance_request.update(attendance_request_params)
+      attendance_request.update!(attendance_request_params)
       attendance_request.attendance_request_notifications.create!(notification: Notification.new)
       redirect_to administrator_attendance_requests_path, notice: "シフト申請編集が完了しました"
     end
@@ -25,5 +25,4 @@ class Administrator::AttendanceRequestsController < ApplicationController
     def attendance_request_params
       params.require(:attendance_request).permit(:state)
     end
-
 end
