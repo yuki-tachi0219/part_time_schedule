@@ -3,6 +3,10 @@
   <div class="pt-5 container"></div>
   <p class="h1 text-center my-5">管理者ログイン</p>
   <div class="pt-4 container"></div>
+  <div class="container text-center">
+    <%= link_to "登録はこちら", new_administrator_administrator_path, class: "btn btn-outline-primary mb-5" %>
+  </div>
+
 
   <%= form_with model: @administrator, url: administrator_session_path, local: true do |f| %>
     <div class="container mb-4 text-center">
@@ -24,8 +28,7 @@
     <div class="pt-4 container"></div>
     <div class="row">
       <div class="container text-center">
-          <%= link_to "登録はこちら", new_administrator_administrator_path, class: "btn btn-primary mx-5" %>
-        <%= f.submit "ログイン", class: "btn btn-primary mx-5" %>
+        <%= f.submit "ログイン", class: "btn btn-primary" %>
       </div>
     </div>
   <% end %>
