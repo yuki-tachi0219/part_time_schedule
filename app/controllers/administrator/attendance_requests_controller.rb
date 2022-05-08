@@ -2,7 +2,7 @@ class Administrator::AttendanceRequestsController < ApplicationController
   before_action :authenticate_administrator!, only: %i[index edit]
 
   def index
-    @attendance_requests = AttendanceRequest.all
+    @attendance_requests = AttendanceRequest.page(params[:page]).per(10)
   end
 
   def edit

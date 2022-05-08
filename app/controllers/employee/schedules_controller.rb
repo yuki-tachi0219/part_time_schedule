@@ -3,7 +3,7 @@ class Employee::SchedulesController < ApplicationController
 
   def index
     if employee_signed_in?
-      @schedules = Schedule.where(employee_id: current_employee.id)
+      @schedules = Schedule.where(employee_id: current_employee.id).page(params[:page]).per(10)
     end
   end
 end

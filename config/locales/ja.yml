@@ -15,3 +15,10 @@ ja:
         application: "申請"
         approval: "承認"
         rejection: "却下"
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      next: "次 &rsaquo;"
+      previous: "&lsaquo; 前"
+      truncate: "&hellip;"

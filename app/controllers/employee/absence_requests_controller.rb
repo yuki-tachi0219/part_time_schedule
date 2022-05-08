@@ -4,7 +4,7 @@ class Employee::AbsenceRequestsController < ApplicationController
   def index
     if employee_signed_in?
       relation = AbsenceRequest.joins(:schedule)
-      @absence_requests = relation.where(schedules: { employee_id: current_employee.id })
+      @absence_requests = relation.where(schedules: { employee_id: current_employee.id }).page(params[:page]).per(10)
     end
   end
 

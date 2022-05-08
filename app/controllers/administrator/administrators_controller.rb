@@ -35,7 +35,7 @@ class Administrator::AdministratorsController < ApplicationController
   end
 
   def index_employee
-    @employee = Employee.all
+    @employee = Employee.page(params[:page]).per(10)
   end
 
   def new_employee
