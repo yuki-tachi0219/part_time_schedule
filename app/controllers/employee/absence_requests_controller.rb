@@ -1,5 +1,5 @@
 class Employee::AbsenceRequestsController < ApplicationController
-  before_action :authenticate_employee!, only: %i[index new show]
+  before_action :authenticate_employee!, only: %i[index new create show]
 
   def index
     if employee_signed_in?
