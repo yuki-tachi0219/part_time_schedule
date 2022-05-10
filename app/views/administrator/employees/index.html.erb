@@ -7,7 +7,7 @@
   </div>
   <div class="container py-3"></div>
   <div class="col-1 mx-auto">
-    <%= link_to "新規登録", new_employee_administrator_administrators_path, class: "btn btn-outline-primary text-center" %>
+    <%= link_to "新規登録", new_administrator_employee_path, class: "btn btn-outline-primary text-center" %>
   </div>
   <div class="container py-3"></div>
 
@@ -21,9 +21,9 @@
     <% @employee.each do |employee| %>
     <tr>
       <td><%= employee.last_name %><%= employee.first_name %></td>
-      <td><%= link_to '詳細', show_employee_administrator_administrator_path(employee.id) %></td>
-      <td><%= link_to '修正', edit_employee_administrator_administrator_path(employee.id) %></td>
-      <td><%= link_to '削除', destroy_employee_administrator_administrator_path(employee.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+      <td><%= link_to '詳細', administrator_employee_path(employee.id) %></td>
+      <td><%= link_to '修正', edit_administrator_employee_path(employee.id) %></td>
+      <td><%= link_to '削除', administrator_employee_path(employee.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
     </tr>
     <% end %>
   </table>
