@@ -2,10 +2,8 @@ class Employee::AbsenceRequestsController < ApplicationController
   before_action :authenticate_employee!, only: %i[index new create show]
 
   def index
-    if employee_signed_in?
-      relation = AbsenceRequest.joins(:schedule)
-      @absence_requests = relation.where(schedules: { employee_id: current_employee.id })
-    end
+    relation = AbsenceRequest.joins(:schedule)
+    @absence_requests = relation.where(schedules: { employee_id: current_employee.id })
   end
 
   def new
