@@ -34,17 +34,17 @@ class Administrator::AdministratorsController < ApplicationController
     end
   end
 
-private
+  private
 
-  def administrator_params
-    params.require(:administrator).permit(:last_name, :first_name, :password, :zipcode, :address, :email, :phone_number)
-  end
-
-  def correct_administrator
-    administrator = Administrator.find_by(id: params[:id])
-    if administrator != current_administrator
-      flash[:notice] = "他人の情報にアクセスすることはできません。"
-      redirect_to root_path
+    def administrator_params
+      params.require(:administrator).permit(:last_name, :first_name, :password, :zipcode, :address, :email, :phone_number)
     end
-  end
+
+    def correct_administrator
+      administrator = Administrator.find_by(id: params[:id])
+      if administrator != current_administrator
+        flash[:notice] = "他人の情報にアクセスすることはできません。"
+        redirect_to root_path
+      end
+    end
 end

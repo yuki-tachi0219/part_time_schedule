@@ -45,10 +45,9 @@ class Administrator::EmployeesController < ApplicationController
     redirect_to administrator_employees_path
   end
 
-private
+  private
 
-  def employee_params
-    params.require(:employee).permit(:last_name, :first_name, :password, :zipcode, :address, :email, :phone_number)
-  end
-
+    def employee_params
+      params.require(:employee).permit(:last_name, :first_name, :password, :zipcode, :address, :email, :phone_number)
+    end
 end
