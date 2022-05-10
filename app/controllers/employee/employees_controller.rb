@@ -3,15 +3,15 @@ class Employee::EmployeesController < ApplicationController
   before_action :correct_employee, only: %i[show edit update]
 
   def show
-    @employee = Employee.find(params[:id])
+    @employee = Employee.find_by(id: params[:id])
   end
 
   def edit
-    @employee = Employee.find(params[:id])
+    @employee = Employee.find_by(id: params[:id])
   end
 
   def update
-    @employee = Employee.find(params[:id])
+    @employee = Employee.find_by(id: params[:id])
     if @employee.update(employee_params)
       redirect_to root_path
     else
