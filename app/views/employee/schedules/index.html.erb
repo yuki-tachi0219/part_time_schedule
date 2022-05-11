@@ -25,7 +25,7 @@
       <td><%= schedule.starting_time.strftime('%H:%M') %></td>
       <td><%= schedule.closing_time.strftime('%H:%M') %></td>
       <td>
-        <% if schedule.absence_request.state == 'approval' %>
+        <% unless schedule.absence_request.state.present? %>
           <%= link_to "欠勤申請", new_employee_schedule_absence_request_path(schedule.id) %>
         <% end %>
       </td>
