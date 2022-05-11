@@ -26,7 +26,7 @@ class Employee::EmployeesController < ApplicationController
     end
 
     def correct_employee
-      employee = Employee.find(params[:id])
+      employee = Employee.find_by(id: params[:id])
       if employee != current_employee
         flash[:notice] = "他人の情報にアクセスすることはできません。"
         redirect_to root_path
