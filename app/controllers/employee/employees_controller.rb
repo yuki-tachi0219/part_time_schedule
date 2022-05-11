@@ -13,7 +13,7 @@ class Employee::EmployeesController < ApplicationController
   def update
     @employee = Employee.find_by(id: params[:id])
     if @employee.update(employee_params)
-      redirect_to root_path
+      redirect_to employee_employee_path(@employee)
     else
       render "edit"
     end
