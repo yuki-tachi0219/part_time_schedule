@@ -28,7 +28,7 @@ class Administrator::AdministratorsController < ApplicationController
     @administrator = Administrator.find_by(id: params[:id])
     if @administrator.update(administrator_params)
       flash[:success] = "管理者情報を更新しました。"
-      redirect_to root_path
+      redirect_to administrator_administrator_path(@administrator)
     else
       render "edit"
     end
