@@ -10,7 +10,7 @@ class Administrator::AbsenceRequestsController < ApplicationController
   def update
     ActiveRecord::Base.transaction do
       absence_request = AbsenceRequest.find_by(id: params[:id])
-      absence_request.update(absence_request_params)
+      absence_request.update!(absence_request_params)
       if params[:absence_request][:state] == "approval"
         absence_request.notifications.create!(action: "approval")
       else
@@ -26,12 +26,5 @@ class Administrator::AbsenceRequestsController < ApplicationController
 
     def absence_request_params
       params.require(:absence_request).permit(:state)
-    end
-
-    def notification_params
-      notification = Notification.new(action: params[:absence_request][:state])
-
-      params[:notification].merge!(action: notification.action)
-      params.require(:notification).permit(:action).merge(action: notification.action)
     end
 end
