@@ -23,7 +23,11 @@
       <td><%= absence_request.schedule.starting_time.strftime('%H:%M') %></td>
       <td><%= absence_request.schedule.closing_time.strftime('%H:%M') %></td>
       <td><%= absence_request.state_i18n %></td>
-      <td><%= link_to '詳細', edit_administrator_absence_request_path(absence_request.id) %></td>
+      <td>
+        <% if absence_request.state == 'application' %>
+          <%= link_to '編集', edit_administrator_absence_request_path(absence_request.id) %>
+        <% end %>
+      </td>
     </tr>
     <% end %>
   </table>

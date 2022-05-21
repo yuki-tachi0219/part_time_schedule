@@ -1,6 +1,9 @@
 class Employee::AttendanceRequestsController < ApplicationController
+  before_action :authenticate_employee!, only: %i[index new show]
+
   def index
-    @attendance_requests = AttendanceRequest.all
+    relation = AttendanceRequest.joins(:schedule)
+    @attendance_requests = relation.where(schedules: { employee_id: current_employee.id })
   end
 
   def new

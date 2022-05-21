@@ -1,4 +1,6 @@
 class Administrator::AbsenceRequestsController < ApplicationController
+  before_action :authenticate_administrator!, only: %i[index edit update]
+
   def index
     @absence_requests = AbsenceRequest.all
   end
