@@ -8,11 +8,14 @@ class Administrator::AbsenceRequestsController < ApplicationController
   end
 
   def update
-    binding.pry
     ActiveRecord::Base.transaction do
       absence_request = AbsenceRequest.find_by(id: params[:id])
       absence_request.update(absence_request_params)
-      absence_request.absence_request_notifications.create!(notification_params)
+      if params[:absence_request][:state] == "approval"
+        absence_request.notifications.create!(action: "approval")
+      else
+        absence_request.notifications.create!(action: "rejection")
+      end
       redirect_to administrator_absence_requests_path, notice: "欠勤申請編集が完了しました"
     end
   rescue
@@ -28,6 +31,7 @@ class Administrator::AbsenceRequestsController < ApplicationController
     def notification_params
       notification = Notification.new(action: params[:absence_request][:state])
 
-      params.require(:notification).permit(:action).merge(action: notification)
+      params[:notification].merge!(action: notification.action)
+      params.require(:notification).permit(:action).merge(action: notification.action)
     end
 end
