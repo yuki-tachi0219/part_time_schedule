@@ -1,20 +1,76 @@
 <div class="container">
   <div class="pt-5 container"></div>
-  <div class="row pb-5">
-    <div class="col-5 mx-auto">
-      <div class="border"></div>
-      <div class="pt-3 container"></div>
-      <p class="h1 text-center">ホーム</p>
-      <div class="pt-3 container"></div>
-      <div class="border"></div>
-    </div>
-  </div>
 
-  <div class="pt-5 container"></div>
-  <div class="row pb-5 text-center">
-    <div class="col-5 mx-auto">
-      <%= link_to "管理者はこちら", 'administrators/sign_in', class: "col-4 btn btn-primary" %>
-      <%= link_to "従業員はこちら", 'employees/sign_in', class: "col-4 btn btn-primary" %>
+  <% if administrator_signed_in? %>
+    <div class="row pb-5">
+      <div class="col-5 mx-auto">
+        <p class="h1 text-center">管理者メニュー</p>
+      </div>
     </div>
-  </div>
+    <div class="container py-3"></div>
+    <div class="text-center">
+      <div class="row pb-4 justify-content-center">
+        <%= link_to "管理者情報詳細", administrator_administrator_path(current_administrator), class: "pb-2" %>
+      </div>
+      <div class="row pb-4 justify-content-center">
+        <%= link_to "従業員一覧", administrator_employees_path(current_administrator), class: "pb-2" %>
+      </div>
+      <div class="row pb-4 justify-content-center">
+        <%= link_to "シフト一覧", administrator_schedules_path, class: "pb-2" %>
+      </div>
+      <div class="row pb-4 justify-content-center">
+        <%= link_to "シフト承認処理", administrator_attendance_requests_path, class: "pb-2" %>
+      </div>
+      <div class="row pb-4 justify-content-center">
+        <%= link_to "欠勤承認処理", administrator_absence_requests_path, class: "pb-2" %>
+      </div>
+      <div class="row pb-4 justify-content-center">
+        <%= link_to "通知", administrator_notifications_path, class: "pb-2" %>
+      </div>
+    </div>
+
+  <% elsif employee_signed_in? %>
+    <div class="row pb-5">
+      <div class="col-5 mx-auto">
+        <p class="h1 text-center">従業員メニュー</p>
+      </div>
+    </div>
+    <div class="container py-3"></div>
+    <div class="text-center">
+      <div class="row pb-4 justify-content-center">
+        <%= link_to "ユーザー情報", employee_employee_path(current_employee), class: "pb-2" %>
+      </div>
+      <div class="row pb-4 justify-content-center">
+        <%= link_to "シフト一覧", employee_schedules_path, class: "pb-2" %>
+      </div>
+      <div class="row pb-4 justify-content-center">
+        <%= link_to "シフト申請一覧", employee_attendance_requests_path, class: "pb-2" %>
+      </div>
+      <div class="row pb-4 justify-content-center">
+        <%= link_to "欠勤申請一覧", employee_absence_requests_path, class: "pb-2" %>
+      </div>
+      <div class="row pb-4 justify-content-center">
+        <%= link_to "通知", employee_notifications_path, class: "pb-2" %>
+      </div>
+    </div>
+
+  <% else %>
+    <div class="row pb-5">
+      <div class="col-5 mx-auto">
+        <div class="border"></div>
+        <div class="pt-3 container"></div>
+        <p class="h1 text-center">ホーム</p>
+        <div class="pt-3 container"></div>
+        <div class="border"></div>
+      </div>
+    </div>
+    <div class="pt-4 container"></div>
+    <div class="row">
+      <div class="container text-center">
+        <%= link_to "管理者はこちら", 'administrators/sign_in', class: "btn btn-primary mx-5" %>
+        <%= link_to "従業員はこちら", 'employees/sign_in', class: "btn btn-primary mx-5" %>
+      </div>
+    </div>
+  <% end %>
+
 </div>

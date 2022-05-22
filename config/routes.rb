@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   end
 
   namespace :administrator do
+    resources :administrators
+    resources :employees
     resources :attendance_requests, only: [:index, :edit, :update]
     resources :absence_requests, only: [:index, :edit, :update]
     resources :notifications, only: [:index]

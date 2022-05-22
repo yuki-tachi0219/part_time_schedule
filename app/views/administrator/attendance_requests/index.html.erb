@@ -23,7 +23,11 @@
       <td><%= attendance_request.schedule.starting_time.strftime('%H:%M') %></td>
       <td><%= attendance_request.schedule.closing_time.strftime('%H:%M') %></td>
       <td><%= attendance_request.state_i18n %></td>
-      <td><%= link_to '編集', edit_administrator_attendance_request_path(attendance_request) %></td>
+      <td>
+        <% if attendance_request.state == 'application' %>
+          <%= link_to '編集', edit_administrator_attendance_request_path(attendance_request) %>
+        <% end %>
+      </td>
     </tr>
     <% end %>
   </table>
