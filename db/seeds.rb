@@ -24,20 +24,26 @@ ActiveRecord::Base.transaction do
     delete_flg: false,
   )
 
-  2.times do |_n|
-    Schedule.create!(
-      starting_time: "2022-01-06 10:00:00",
-      closing_time: "2022-01-06 16:00:00",
-      employee_id: 1,
-    )
-  end
-  2.times do |_n|
-    Schedule.create!(
-      starting_time: "2022-01-07 10:00:00",
-      closing_time: "2022-01-07 18:00:00",
-      employee_id: 2,
-    )
-  end
+  Schedule.create!(
+    starting_time: "2022-01-06 10:00:00",
+    closing_time: "2022-01-06 16:00:00",
+    employee_id: 1,
+  )
+  Schedule.create!(
+    starting_time: "2022-01-07 11:00:00",
+    closing_time: "2022-01-07 18:00:00",
+    employee_id: 1,
+  )
+  Schedule.create!(
+    starting_time: "2022-01-06 11:00:00",
+    closing_time: "2022-01-06 17:00:00",
+    employee_id: 2,
+  )
+  Schedule.create!(
+    starting_time: "2022-01-07 12:00:00",
+    closing_time: "2022-01-07 19:00:00",
+    employee_id: 2,
+  )
   AttendanceRequest.create!(
     state: 0,
     schedule_id: 1,
