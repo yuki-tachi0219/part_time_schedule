@@ -1,6 +1,6 @@
 class Employee::AttendanceRequestsController < ApplicationController
   def index
-    @attendance_requests = AttendanceRequest.all.includes(:schedule).order("schedules.starting_time DESC")
+    @attendance_requests = AttendanceRequest.all.joins(:schedule).order("schedules.starting_time DESC")
   end
 
   def new

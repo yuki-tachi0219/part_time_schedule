@@ -1,6 +1,6 @@
 class Administrator::AbsenceRequestsController < ApplicationController
   def index
-    @absence_requests = AbsenceRequest.all.includes(:schedule).order("schedules.starting_time DESC")
+    @absence_requests = AbsenceRequest.all.joins(:schedule).order("schedules.starting_time DESC")
   end
 
   def edit
