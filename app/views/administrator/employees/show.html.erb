@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="pt-5 container"></div>
+  <div class="row pb-5">
+    <div class="col-5 mx-auto">
+      <p class="h1 text-center">従業員情報</p>
+    </div>
+  </div>
+  <div class="container py-3"></div>
+
+  <div class="row pb-5">
+    <div class="d-flex col-4 mx-auto">
+      <div class="col-5 text-center">　氏名　：　</div>
+      <div class="col-7 text-start"><%= @employee.last_name %><%= @employee.first_name %></div>
+    </div>
+  </div>
+  <div class="row pb-5">
+    <div class="d-flex col-4 mx-auto">
+      <div class="col-5 text-center">　住所　：　</div>
+      <div class="col-7 text-start"><%= @employee.zipcode %></div>
+    </div>
+  </div>
+  <div class="row pb-5">
+    <div class="d-flex col-4 mx-auto">
+      <div class="col-5 text-center"></div>
+      <div class="col-7 text-start"><%= @employee.address %></div>
+    </div>
+  </div>
+  <div class="row pb-5">
+    <div class="d-flex col-4 mx-auto">
+      <div class="col-5 text-center">電話番号　：　</div>
+      <div class="col-7 text-start"><%= @employee.phone_number%></div>
+    </div>
+  </div>
+  <div class="row pb-5">
+    <div class="d-flex col-4 mx-auto">
+      <div class="col-5 text-center">　 email　：　</div>
+      <div class="col-7 text-start"><%= @employee.email %></div>
+    </div>
+  </div>
+  <div class="py-3 container text-center">
+    <%= link_to "従業員一覧に戻る", administrator_employees_path, class: "btn btn-outline-primary mx-5" %>
+    <%= link_to "修正する", edit_administrator_employee_path(@employee), class: "btn btn-outline-primary mx-5" %>
+  </div>
+</div>
