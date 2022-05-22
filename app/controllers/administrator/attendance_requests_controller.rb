@@ -11,7 +11,7 @@ class Administrator::AttendanceRequestsController < ApplicationController
     ActiveRecord::Base.transaction do
       attendance_request = AttendanceRequest.find_by(id: params[:id])
       attendance_request.update!(attendance_request_params)
-      if params[:absence_request][:state] == "approval"
+      if params[:attendance_request][:state] == "approval"
         attendance_request.notifications.create!(action: "approval")
       else
         attendance_request.notifications.create!(action: "rejection")
