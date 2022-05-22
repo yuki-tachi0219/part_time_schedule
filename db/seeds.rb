@@ -25,23 +25,23 @@ ActiveRecord::Base.transaction do
   )
 
   Schedule.create!(
-    starting_time: "2022-01-06 10:00:00",
-    closing_time: "2022-01-06 16:00:00",
+    starting_time: "2022-05-06 10:00:00",
+    closing_time: "2022-05-06 16:00:00",
     employee_id: 1,
   )
   Schedule.create!(
-    starting_time: "2022-01-07 11:00:00",
-    closing_time: "2022-01-07 18:00:00",
+    starting_time: "2022-05-07 11:00:00",
+    closing_time: "2022-05-07 18:00:00",
     employee_id: 1,
   )
   Schedule.create!(
-    starting_time: "2022-01-06 11:00:00",
-    closing_time: "2022-01-06 17:00:00",
+    starting_time: "2022-05-06 11:00:00",
+    closing_time: "2022-05-06 17:00:00",
     employee_id: 2,
   )
   Schedule.create!(
-    starting_time: "2022-01-07 12:00:00",
-    closing_time: "2022-01-07 19:00:00",
+    starting_time: "2022-05-07 12:00:00",
+    closing_time: "2022-05-07 19:00:00",
     employee_id: 2,
   )
   AttendanceRequest.create!(

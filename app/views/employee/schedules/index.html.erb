@@ -10,26 +10,18 @@
   </div>
   <div class="container py-3"></div>
 
-  <table class="table">
-    <tr>
-      <th>出勤者</th>
-      <th>出勤日</th>
-      <th>出勤時間</th>
-      <th>退勤時間</th>
-      <th>欠勤申請</th>
-    </tr>
-    <% @schedules.each do |schedule| %>
-    <tr>
-      <td><%= schedule.employee.last_name %></td>
-      <td><%= schedule.starting_time.strftime('%Y/%m/%d') %></td>
-      <td><%= schedule.starting_time.strftime('%H:%M') %></td>
-      <td><%= schedule.closing_time.strftime('%H:%M') %></td>
-      <td>
-        <% unless schedule.absence_request.present? %>
-          <%= link_to "欠勤申請", new_employee_schedule_absence_request_path(schedule.id) %>
-        <% end %>
-      </td>
-    </tr>
+<%= week_calendar starting_time: @schedules do |date, schedules| %>
+  <%= date.day %>
+  <% schedules.each do |schedule| %>
+    <%= schedule.employee.last_name %>
+    <%= schedule.starting_time.strftime('%Y/%m/%d') %>
+    <%= schedule.starting_time.strftime('%H:%M') %>
+    <%= schedule.closing_time.strftime('%H:%M') %>
+    <% unless schedule.absence_request.present? %>
+      <%= link_to "欠勤申請", new_employee_schedule_absence_request_path(schedule.id) %>
     <% end %>
-  </table>
+  <% end %>
+<% end %>
+
+
 </div>
