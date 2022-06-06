@@ -1,6 +1,6 @@
-json.array!(@events) do |event|
-  json.id event.id
-  json.title event.employee.last_name
-  json.start event.starting_time
-  json.end event.closing_time
+json.array!(@schedules) do |schedule|
+  json.id schedule.id
+  json.title schedule.employee.last_name
+  json.start schedule.starting_time
+  json.end schedule.closing_time
 end
