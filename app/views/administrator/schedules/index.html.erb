@@ -6,21 +6,6 @@
     </div>
   </div>
   <div class="container py-3"></div>
-
-  <table class="table">
-    <tr>
-      <th>出勤者</th>
-      <th>出勤日</th>
-      <th>出勤時間</th>
-      <th>退勤時間</th>
-    </tr>
-    <% @schedules.each do |schedule| %>
-    <tr>
-      <td><%= schedule.employee.last_name %></td>
-      <td><%= schedule.starting_time.strftime('%Y/%m/%d') %></td>
-      <td><%= schedule.starting_time.strftime('%H:%M') %></td>
-      <td><%= schedule.closing_time.strftime('%H:%M') %></td>
-    </tr>
-    <% end %>
-  </table>
+  <div id='calendar'></div>
+  <%= javascript_pack_tag 'calendar/admin_schedule' %>
 </div>
