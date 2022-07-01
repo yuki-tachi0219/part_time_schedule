@@ -2,7 +2,7 @@ class Administrator::EmployeesController < ApplicationController
   before_action :authenticate_administrator!
 
   def index
-    @employee = Employee.all
+    @employee = Employee.page(params[:page]).per(10)
   end
 
   def new

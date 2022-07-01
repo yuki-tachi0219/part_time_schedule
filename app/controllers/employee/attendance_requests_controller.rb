@@ -3,7 +3,7 @@ class Employee::AttendanceRequestsController < ApplicationController
 
   def index
     relation = AttendanceRequest.joins(:schedule)
-    @attendance_requests = relation.where(schedules: { employee_id: current_employee.id })
+    @attendance_requests = relation.where(schedules: { employee_id: current_employee.id }).page(params[:page]).per(10)
   end
 
   def new
