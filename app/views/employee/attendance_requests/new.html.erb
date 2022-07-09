@@ -10,9 +10,9 @@
   <%= form_with(model: [ :employee, @attendance_request ]) do |form| %>
     <div class="container mb-4 text-center">
       <div class="row justify-content-center">
-        <%= form.label :starting_time, "出勤日　：　", class: "col-form-label col-sm-2 text-center" %>
+        <%= form.label :starting_date, "出勤日　：　", class: "col-form-label col-sm-2 text-center" %>
         <div class="col-sm-6">
-          <%= form.date_field :starting_time, class: "form-control", id: "date_sample"%>
+          <%= form.date_field :starting_date, class: "form-control", id: "date_sample"%>
         </div>
       </div>
     </div>
